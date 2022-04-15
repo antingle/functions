@@ -11,6 +11,10 @@
 		92F4476E28089FEE00EC45D5 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92F4476D28089FEE00EC45D5 /* ContentView.swift */; };
 		92F4477028089FF100EC45D5 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 92F4476F28089FF100EC45D5 /* Assets.xcassets */; };
 		92F4477328089FF100EC45D5 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 92F4477228089FF100EC45D5 /* Preview Assets.xcassets */; };
+		92F4477F2808ADB200EC45D5 /* EmptyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92F4477E2808ADB200EC45D5 /* EmptyView.swift */; };
+		92F447822808B61600EC45D5 /* MathExpression in Frameworks */ = {isa = PBXBuildFile; productRef = 92F447812808B61600EC45D5 /* MathExpression */; };
+		92F447852808C25800EC45D5 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92F447842808C25800EC45D5 /* AppDelegate.swift */; };
+		92F447872808C3B000EC45D5 /* HelperFunctions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92F447862808C3B000EC45D5 /* HelperFunctions.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -20,6 +24,10 @@
 		92F4476F28089FF100EC45D5 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		92F4477228089FF100EC45D5 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		92F4477428089FF100EC45D5 /* Calculator.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Calculator.entitlements; sourceTree = "<group>"; };
+		92F4477E2808ADB200EC45D5 /* EmptyView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmptyView.swift; sourceTree = "<group>"; };
+		92F447832808C1B600EC45D5 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
+		92F447842808C25800EC45D5 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		92F447862808C3B000EC45D5 /* HelperFunctions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HelperFunctions.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -27,6 +35,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				92F447822808B61600EC45D5 /* MathExpression in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -52,8 +61,12 @@
 		92F4476A28089FEE00EC45D5 /* Calculator */ = {
 			isa = PBXGroup;
 			children = (
+				92F447832808C1B600EC45D5 /* Info.plist */,
 				92F4476B28089FEE00EC45D5 /* CalculatorApp.swift */,
+				92F447842808C25800EC45D5 /* AppDelegate.swift */,
+				92F4477E2808ADB200EC45D5 /* EmptyView.swift */,
 				92F4476D28089FEE00EC45D5 /* ContentView.swift */,
+				92F447862808C3B000EC45D5 /* HelperFunctions.swift */,
 				92F4476F28089FF100EC45D5 /* Assets.xcassets */,
 				92F4477428089FF100EC45D5 /* Calculator.entitlements */,
 				92F4477128089FF100EC45D5 /* Preview Content */,
@@ -85,6 +98,9 @@
 			dependencies = (
 			);
 			name = Calculator;
+			packageProductDependencies = (
+				92F447812808B61600EC45D5 /* MathExpression */,
+			);
 			productName = Calculator;
 			productReference = 92F4476828089FEE00EC45D5 /* Calculator.app */;
 			productType = "com.apple.product-type.application";
@@ -113,6 +129,9 @@
 				Base,
 			);
 			mainGroup = 92F4475F28089FEE00EC45D5;
+			packageReferences = (
+				92F447802808B61600EC45D5 /* XCRemoteSwiftPackageReference "MathExpression" */,
+			);
 			productRefGroup = 92F4476928089FEE00EC45D5 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -139,7 +158,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				92F447872808C3B000EC45D5 /* HelperFunctions.swift in Sources */,
+				92F4477F2808ADB200EC45D5 /* EmptyView.swift in Sources */,
 				92F4476E28089FEE00EC45D5 /* ContentView.swift in Sources */,
+				92F447852808C25800EC45D5 /* AppDelegate.swift in Sources */,
 				92F4476C28089FEE00EC45D5 /* CalculatorApp.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -197,6 +219,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
+				"INFOPLIST_FILE[sdk=*]" = "";
 				MACOSX_DEPLOYMENT_TARGET = 12.3;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
@@ -270,8 +293,10 @@
 				COMBINE_HIDPI_IMAGES = YES;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"Calculator/Preview Content\"";
+				DEVELOPMENT_TEAM = 4UQS8N4WUS;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = Calculator/Info.plist;
 				INFOPLIST_KEY_NSHumanReadableCopyright = "";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -295,8 +320,10 @@
 				COMBINE_HIDPI_IMAGES = YES;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"Calculator/Preview Content\"";
+				DEVELOPMENT_TEAM = 4UQS8N4WUS;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = Calculator/Info.plist;
 				INFOPLIST_KEY_NSHumanReadableCopyright = "";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -332,6 +359,25 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		92F447802808B61600EC45D5 /* XCRemoteSwiftPackageReference "MathExpression" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/peredaniel/MathExpression.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 1.0.0;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		92F447812808B61600EC45D5 /* MathExpression */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 92F447802808B61600EC45D5 /* XCRemoteSwiftPackageReference "MathExpression" */;
+			productName = MathExpression;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = 92F4476028089FEE00EC45D5 /* Project object */;
 }

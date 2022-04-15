@@ -1,0 +1,14 @@
+{
+  "pins" : [
+    {
+      "identity" : "mathexpression",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/peredaniel/MathExpression.git",
+      "state" : {
+        "revision" : "12828f309761061d3842ab016a77977248983a26",
+        "version" : "1.2.0"
+      }
+    }
+  ],
+  "version" : 2
+}
