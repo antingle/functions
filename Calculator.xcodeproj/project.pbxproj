@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		92B01F4A2809250B0069F3D7 /* HotKey in Frameworks */ = {isa = PBXBuildFile; productRef = 92B01F492809250B0069F3D7 /* HotKey */; };
 		92F4476C28089FEE00EC45D5 /* CalculatorApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92F4476B28089FEE00EC45D5 /* CalculatorApp.swift */; };
 		92F4476E28089FEE00EC45D5 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92F4476D28089FEE00EC45D5 /* ContentView.swift */; };
 		92F4477028089FF100EC45D5 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 92F4476F28089FF100EC45D5 /* Assets.xcassets */; };
@@ -35,6 +36,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				92B01F4A2809250B0069F3D7 /* HotKey in Frameworks */,
 				92F447822808B61600EC45D5 /* MathExpression in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -100,6 +102,7 @@
 			name = Calculator;
 			packageProductDependencies = (
 				92F447812808B61600EC45D5 /* MathExpression */,
+				92B01F492809250B0069F3D7 /* HotKey */,
 			);
 			productName = Calculator;
 			productReference = 92F4476828089FEE00EC45D5 /* Calculator.app */;
@@ -131,6 +134,7 @@
 			mainGroup = 92F4475F28089FEE00EC45D5;
 			packageReferences = (
 				92F447802808B61600EC45D5 /* XCRemoteSwiftPackageReference "MathExpression" */,
+				92B01F482809250B0069F3D7 /* XCRemoteSwiftPackageReference "HotKey" */,
 			);
 			productRefGroup = 92F4476928089FEE00EC45D5 /* Products */;
 			projectDirPath = "";
@@ -361,6 +365,14 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
+		92B01F482809250B0069F3D7 /* XCRemoteSwiftPackageReference "HotKey" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/soffes/HotKey";
+			requirement = {
+				branch = master;
+				kind = branch;
+			};
+		};
 		92F447802808B61600EC45D5 /* XCRemoteSwiftPackageReference "MathExpression" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/peredaniel/MathExpression.git";
@@ -372,6 +384,11 @@
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
+		92B01F492809250B0069F3D7 /* HotKey */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 92B01F482809250B0069F3D7 /* XCRemoteSwiftPackageReference "HotKey" */;
+			productName = HotKey;
+		};
 		92F447812808B61600EC45D5 /* MathExpression */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = 92F447802808B61600EC45D5 /* XCRemoteSwiftPackageReference "MathExpression" */;

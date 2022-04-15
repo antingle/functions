@@ -30,15 +30,16 @@ struct ContentView: View {
                                 .font(.title2)
                                 .onTapGesture {
                                     expression += item.solution
-                                }
+                                }.padding(.top, 2)
                             Text(item.expression)
                                 .rotationEffect(Angle(degrees: 180)).scaleEffect(x: -1.0, y: 1.0, anchor: .center)
                                 .frame(maxWidth: .infinity, alignment: .leading)
                                 .font(.body)
                                 .onTapGesture {
                                     expression += item.expression
+                                    
                                 }
-                        }.padding(.top, 2)
+                        }.padding(.top, 4)
                     }
                     
                 })
@@ -46,6 +47,7 @@ struct ContentView: View {
             
             // Expressions are typed in here
             TextField("Calculate", text: $expression)
+                .textFieldStyle(.plain)
                 .onSubmit {
                     do {
                         solution = try evaluteExpression(expression)
@@ -56,7 +58,7 @@ struct ContentView: View {
                         expression = ""
                     }
                     catch {
-                        solution = 0.0
+                        solution = 0
                     }
                     
                 }

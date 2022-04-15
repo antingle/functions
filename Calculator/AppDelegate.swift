@@ -6,9 +6,11 @@
 //
 
 import SwiftUI
+import HotKey
 
 // Using AppDelegate because it is needed for NSPopover
 class AppDelegate: NSObject, NSApplicationDelegate {
+    let hotKey = HotKey(key: .c, modifiers: [.command, .option])
     var popover = NSPopover.init()
     var statusBarItem: NSStatusItem?
     static var shared : AppDelegate!
@@ -25,6 +27,11 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         statusBarItem = NSStatusBar.system.statusItem(withLength: NSStatusItem.variableLength)
         statusBarItem?.button?.image = NSImage(systemSymbolName: "function", accessibilityDescription: "calculator")
         statusBarItem?.button?.action = #selector(AppDelegate.togglePopover(_:))
+     
+        hotKey.keyDownHandler = {
+            self.togglePopover(self)
+        }
+        
     }
     @objc func showPopover(_ sender: AnyObject?) {
         if let button = statusBarItem?.button {
