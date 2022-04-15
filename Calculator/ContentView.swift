@@ -6,8 +6,7 @@
 //
 
 import SwiftUI
-import MathExpression
-
+import Expression
 struct ContentView: View {
     @Namespace var mainNamespace
     @State private var isUpdated: Bool = false
@@ -67,13 +66,13 @@ struct ContentView: View {
                 .textFieldStyle(.plain)
                 .onSubmit {
                     do {
-                        solution = try evaluteExpression(expression)
+                        solution = try Expression(expression).evaluate()
                         
                         // insert item into history
                         withAnimation(.spring()) {
-                        let historyItem = History(expression: expression, solution: solution.removeZerosFromEnd())
-                        history.insert(historyItem, at: 0)
-                        
+                            let historyItem = History(expression: expression, solution: solution.removeZerosFromEnd())
+                            history.insert(historyItem, at: 0)
+                            
                         }
                         expression = ""
                     }
@@ -83,7 +82,7 @@ struct ContentView: View {
                 }
                 .onChange(of: expression) { newExpression in
                     do {
-                        solution = try evaluteExpression(expression)
+                        solution = try Expression(newExpression).evaluate()
                     }
                     catch {
                         solution = 0
@@ -117,17 +116,42 @@ struct ContentView: View {
                 } label: {
                     Image(systemName: "divide")
                 }
+                Button ("Ans") {
+                    if (!history.isEmpty)
+                    {
+                        expression += history[0].solution
+                    }
+                }
             }
+            // selecting expressions as the first entry highlights the text field :(
+//            HStack {
+//                Button ("sin(x)") {
+//                    expression += "sin("
+//                }
+//                Button ("cos(x)") {
+//                    expression += "cos("
+//                }
+//                Button ("tan(x)") {
+//                    expression += "tan("
+//                }
+//            }
+//
+//            HStack {
+//                Button ("asin(x)") {
+//                    expression += "asin("
+//                }
+//                Button ("acos(x)") {
+//                    expression += "acos("
+//                }
+//                Button ("atan(x)") {
+//                    expression += "atan("
+//                }
+//            }
             
         }
         .padding([.horizontal, .bottom])
         .frame(maxWidth: .infinity, maxHeight: .infinity)
         .frame(height: 350)
-    }
-    
-    func evaluteExpression(_ expression: String) throws -> Double {
-        let expression = try MathExpression(expression)
-        return expression.evaluate()
     }
 }
 

@@ -1,21 +1,21 @@
 {
   "pins" : [
     {
+      "identity" : "expression",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/nicklockwood/Expression.git",
+      "state" : {
+        "revision" : "8fb79f95df29f98565039586fe722323f91ce0c7",
+        "version" : "0.13.6"
+      }
+    },
+    {
       "identity" : "hotkey",
       "kind" : "remoteSourceControl",
       "location" : "https://github.com/soffes/HotKey",
       "state" : {
         "branch" : "master",
         "revision" : "c13662730cb5bc28de4a799854bbb018a90649bf"
-      }
-    },
-    {
-      "identity" : "mathexpression",
-      "kind" : "remoteSourceControl",
-      "location" : "https://github.com/peredaniel/MathExpression.git",
-      "state" : {
-        "revision" : "12828f309761061d3842ab016a77977248983a26",
-        "version" : "1.2.0"
       }
     }
   ],
