@@ -44,7 +44,6 @@ struct ContentView: View {
             
         }
         .padding([.horizontal, .bottom])
-        .frame(width: 260, height: 400)
         .frame(maxWidth: .infinity, maxHeight: .infinity)
     }
 }

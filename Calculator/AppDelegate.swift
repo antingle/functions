@@ -16,6 +16,11 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     static var shared : AppDelegate!
     func applicationDidFinishLaunching(_ notification: Notification) {
         
+        // close window on launch
+        if let window = NSApplication.shared.windows.first {
+            window.close()
+        }
+        
         let contentView = ContentView()
         
         // Set the SwiftUI's ContentView to the Popover's ContentViewController
@@ -24,10 +29,12 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         popover.contentViewController = NSViewController()
         popover.contentViewController?.view = NSHostingView(rootView: contentView)
         popover.contentViewController?.view.window?.makeKey()
+        popover.contentSize = CGSize(width: 260, height: 400)
+        
         statusBarItem = NSStatusBar.system.statusItem(withLength: NSStatusItem.variableLength)
         statusBarItem?.button?.image = NSImage(systemSymbolName: "function", accessibilityDescription: "calculator")
         statusBarItem?.button?.action = #selector(AppDelegate.togglePopover(_:))
-     
+        
         hotKey.keyDownHandler = {
             self.togglePopover(self)
         }
