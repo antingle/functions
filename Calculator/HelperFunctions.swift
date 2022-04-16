@@ -6,6 +6,7 @@
 //
 
 import Foundation
+import Expression
 
 struct History: Identifiable {
     let id = UUID()
@@ -21,4 +22,16 @@ extension Double {
         formatter.maximumFractionDigits = 16 // maximum digits in Double after dot (maximum precision)
         return String(formatter.string(from: number) ?? "")
     }
+}
+
+func evaluateExpression(_ givenExpression: String) throws -> Double {
+    var solution: Double = 0;
+    
+    // ability to use ^ as a power operator
+    let expression = Expression(givenExpression, symbols: [
+        .infix("^"): { params in pow(params[0], params[1]) },
+    ])
+    solution = try expression.evaluate()
+    
+    return solution;
 }

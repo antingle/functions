@@ -66,7 +66,7 @@ struct ContentView: View {
                 .textFieldStyle(.plain)
                 .onSubmit {
                     do {
-                        solution = try Expression(expression).evaluate()
+                        solution = try evaluateExpression(expression)
                         
                         // insert item into history
                         withAnimation(.spring()) {
@@ -82,7 +82,7 @@ struct ContentView: View {
                 }
                 .onChange(of: expression) { newExpression in
                     do {
-                        solution = try Expression(newExpression).evaluate()
+                        solution = try evaluateExpression(newExpression)
                     }
                     catch {
                         solution = 0
@@ -96,6 +96,9 @@ struct ContentView: View {
                 .foregroundColor(.gray)
             
             HStack {
+                Button("C") {
+                    expression = ""
+                }
                 Button {
                     expression += "+"
                 } label: {
@@ -150,8 +153,8 @@ struct ContentView: View {
             
         }
         .padding([.horizontal, .bottom])
+        .frame(width: 260, height: 350)
         .frame(maxWidth: .infinity, maxHeight: .infinity)
-        .frame(height: 350)
     }
 }
 
