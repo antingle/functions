@@ -5,7 +5,7 @@
 //  Created by Anthony Ingle on 4/14/22.
 //
 
-import Foundation
+import SwiftUI
 import Expression
 
 struct History: Identifiable {
@@ -34,4 +34,35 @@ func evaluateExpression(_ givenExpression: String) throws -> Double {
     solution = try expression.evaluate()
     
     return solution;
+}
+
+struct CalcButtonStyle: ButtonStyle {
+  var foregroundColor: Color
+  var backgroundColor: Color
+  var pressedColor: Color
+
+  func makeBody(configuration: Self.Configuration) -> some View {
+    configuration.label
+      .frame(height: 20)
+      .frame(maxWidth: .infinity)
+      .foregroundColor(foregroundColor)
+      .background(configuration.isPressed ? .tertiary : .quaternary)
+      .cornerRadius(5)
+  }
+}
+
+extension View {
+  func calcButton(
+    foregroundColor: Color = .white,
+    backgroundColor: Color = .gray,
+    pressedColor: Color = .accentColor
+  ) -> some View {
+    self.buttonStyle(
+      CalcButtonStyle(
+        foregroundColor: foregroundColor,
+        backgroundColor: backgroundColor,
+        pressedColor: pressedColor
+      )
+    )
+  }
 }
