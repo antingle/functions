@@ -56,10 +56,8 @@ struct CalculatorView: View {
             })
         }).rotationEffect(Angle(degrees: 180)).scaleEffect(x: -1.0, y: 1.0, anchor: .center)
         
+        MacEditorTextView(text: $expression)
         
-        // Expressions are typed in here
-        TextField("Calculate", text: $expression)
-            .textFieldStyle(.plain)
             .onSubmit {
                 do {
                     solution = try evaluateExpression(expression)
@@ -84,6 +82,15 @@ struct CalculatorView: View {
                     solution = 0
                 }
             }
+        
+        // Expressions are typed in here
+//        TextField("Calculate", text: $expression)
+//            .textFieldStyle(.plain)
+//            .onSubmit {
+//
+//            }
+//
+//            }
         
         
         Text(solution == 0 ? " " : solution.removeZerosFromEnd())
