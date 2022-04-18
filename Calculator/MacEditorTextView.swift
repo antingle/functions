@@ -1,3 +1,4 @@
+
 /**
  *  MacEditorTextView
  *  Copyright (c) Thiago Holanda 2020-2021
@@ -11,11 +12,12 @@ import SwiftUI
 
 struct MacEditorTextView: NSViewRepresentable {
     @Binding var text: String
+    var placeholderText: String?
     var isEditable: Bool = true
     var font: NSFont?    = .systemFont(ofSize: 14, weight: .regular)
     
     var onEditingChanged: () -> Void       = {}
-    var onSubmit        : () -> Void       = {}
+    var onCommit        : () -> Void       = {}
     var onTextChange    : (String) -> Void = { _ in }
     
     func makeCoordinator() -> Coordinator {
@@ -26,7 +28,8 @@ struct MacEditorTextView: NSViewRepresentable {
         let textView = CustomTextView(
             text: text,
             isEditable: isEditable,
-            font: font
+            font: font,
+            placeholderText: placeholderText
         )
         textView.delegate = context.coordinator
         
@@ -94,6 +97,7 @@ extension MacEditorTextView {
             
             self.parent.text = textView.string
             self.selectedRanges = textView.selectedRanges
+            self.parent.onTextChange(textView.string)
         }
         
         func textDidEndEditing(_ notification: Notification) {
@@ -102,8 +106,34 @@ extension MacEditorTextView {
             }
             
             self.parent.text = textView.string
-            self.parent.onSubmit()
+            self.parent.onCommit()
         }
+        
+        // handles commands
+        func textView(_ textView: NSTextView, doCommandBy commandSelector: Selector) -> Bool {
+            if (commandSelector == #selector(NSResponder.insertNewline(_:))) {
+                // Do something against ENTER key
+                self.parent.onCommit()
+                return true
+            }
+            //            } else if (commandSelector == #selector(NSResponder.deleteForward(_:))) {
+            //                // Do something against DELETE key
+            //                return true
+            //            } else if (commandSelector == #selector(NSResponder.deleteBackward(_:))) {
+            //                // Do something against BACKSPACE key
+            //                return true
+            //            } else if (commandSelector == #selector(NSResponder.insertTab(_:))) {
+            //                // Do something against TAB key
+            //                return true
+            //            } else if (commandSelector == #selector(NSResponder.cancelOperation(_:))) {
+            //                // Do something against ESCAPE key
+            //                return true
+            //            }
+            
+            // return true if the action was handled; otherwise false
+            return false
+        }
+        
     }
 }
 
@@ -112,6 +142,7 @@ extension MacEditorTextView {
 final class CustomTextView: NSView {
     private var isEditable: Bool
     private var font: NSFont?
+    private var placeholderText: String?
     
     weak var delegate: NSTextViewDelegate?
     
@@ -135,7 +166,7 @@ final class CustomTextView: NSView {
         let scrollView = NSScrollView()
         scrollView.drawsBackground = false
         scrollView.borderType = .noBorder
-        scrollView.hasVerticalScroller = false
+        scrollView.hasVerticalScroller = true
         scrollView.hasHorizontalRuler = false
         scrollView.autoresizingMask = [.width, .height]
         scrollView.translatesAutoresizingMaskIntoConstraints = false
@@ -161,10 +192,8 @@ final class CustomTextView: NSView {
         
         layoutManager.addTextContainer(textContainer)
         
-        
-        let textView                     = NSTextView(frame: .zero, textContainer: textContainer)
+        let textView                     = PlaceholderNSTextView(frame: .zero, textContainer: textContainer)
         textView.autoresizingMask        = .width
-        textView.backgroundColor         = NSColor.clear
         textView.delegate                = self.delegate
         textView.drawsBackground         = false
         textView.font                    = self.font
@@ -175,15 +204,17 @@ final class CustomTextView: NSView {
         textView.minSize                 = NSSize(width: 0, height: contentSize.height)
         textView.textColor               = NSColor.labelColor
         textView.allowsUndo              = true
+        textView.placeholderText         = self.placeholderText
         
         return textView
     }()
     
     // MARK: - Init
-    init(text: String, isEditable: Bool, font: NSFont?) {
-        self.font       = font
-        self.isEditable = isEditable
-        self.text       = text
+    init(text: String, isEditable: Bool, font: NSFont?, placeholderText: String?) {
+        self.font               = font
+        self.isEditable         = isEditable
+        self.text               = text
+        self.placeholderText    = placeholderText
         
         super.init(frame: .zero)
     }
@@ -216,5 +247,19 @@ final class CustomTextView: NSView {
     
     func setupTextView() {
         scrollView.documentView = textView
+    }
+}
+
+// for setting a proper placeholder text on an NSTextView
+class PlaceholderNSTextView: NSTextView {
+    @objc private var placeholderAttributedString: NSAttributedString?
+    var placeholderText: String? {
+        didSet {
+            var attributes = [NSAttributedString.Key: AnyObject]()
+            attributes[.font] = font
+            attributes[.foregroundColor] = NSColor.gray
+            let captionAttributedString = NSAttributedString(string: placeholderText ?? "", attributes: attributes)
+            placeholderAttributedString = captionAttributedString
+        }
     }
 }

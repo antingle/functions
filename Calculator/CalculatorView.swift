@@ -56,41 +56,60 @@ struct CalculatorView: View {
             })
         }).rotationEffect(Angle(degrees: 180)).scaleEffect(x: -1.0, y: 1.0, anchor: .center)
         
-        MacEditorTextView(text: $expression)
-        
-            .onSubmit {
-                do {
-                    solution = try evaluateExpression(expression)
-                    
-                    // insert item into history
-                    withAnimation(.spring()) {
-                        let historyItem = History(expression: expression, solution: solution.removeZerosFromEnd())
-                        history.insert(historyItem, at: 0)
-                        
-                    }
-                    expression = ""
-                }
-                catch {
-                    solution = 0
-                }
+        MacEditorTextView(text: $expression, placeholderText: "Calculate", isEditable: true, onEditingChanged: {}, onCommit: {do {
+            solution = try evaluateExpression(expression)
+            
+            // insert item into history
+            withAnimation(.spring()) {
+                let historyItem = History(expression: expression, solution: solution.removeZerosFromEnd())
+                history.insert(historyItem, at: 0)
+                
             }
-            .onChange(of: expression) { newExpression in
+            expression = ""
+        }
+            catch {
+                solution = 0
+            }}, onTextChange: {newExpression in
                 do {
                     solution = try evaluateExpression(newExpression)
                 }
                 catch {
                     solution = 0
-                }
-            }
-        
+                } })
+        //        TextFieldAppKit("Calculate", text: $expression, nsFont: .systemFont(ofSize: 14))
+        //            .onCommit {
+        //                do {
+        //                    solution = try evaluateExpression(expression)
+        //
+        //                    // insert item into history
+        //                    withAnimation(.spring()) {
+        //                        let historyItem = History(expression: expression, solution: solution.removeZerosFromEnd())
+        //                        history.insert(historyItem, at: 0)
+        //
+        //                    }
+        //                    expression = ""
+        //                }
+        //                catch {
+        //                    solution = 0
+        //                }
+        //            }
+        //            .onChange(of: expression) { newExpression in
+        //                do {
+        //                    solution = try evaluateExpression(newExpression)
+        //                }
+        //                catch {
+        //                    solution = 0
+        //                }
+        //            }
+        //
         // Expressions are typed in here
-//        TextField("Calculate", text: $expression)
-//            .textFieldStyle(.plain)
-//            .onSubmit {
-//
-//            }
-//
-//            }
+        //        TextField("Calculate", text: $expression)
+        //            .textFieldStyle(.plain)
+        //            .onSubmit {
+        //
+        //            }
+        //
+        //            }
         
         
         Text(solution == 0 ? " " : solution.removeZerosFromEnd())

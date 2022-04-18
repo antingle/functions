@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		9218BABD280DB3E90068F3AF /* MacEditorTextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9218BABC280DB3E90068F3AF /* MacEditorTextView.swift */; };
 		928D96C6280A8F9300B6CE2E /* ButtonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 928D96C5280A8F9300B6CE2E /* ButtonView.swift */; };
 		928D96C8280AA58D00B6CE2E /* CalculatorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 928D96C7280AA58D00B6CE2E /* CalculatorView.swift */; };
 		928D96CA280AA5E400B6CE2E /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 928D96C9280AA5E400B6CE2E /* SettingsView.swift */; };
@@ -18,10 +19,11 @@
 		92F4477328089FF100EC45D5 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 92F4477228089FF100EC45D5 /* Preview Assets.xcassets */; };
 		92F447852808C25800EC45D5 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92F447842808C25800EC45D5 /* AppDelegate.swift */; };
 		92F447872808C3B000EC45D5 /* HelperFunctions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92F447862808C3B000EC45D5 /* HelperFunctions.swift */; };
-		92F657B9280BB000003DB042 /* MacEditorTextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92F657B8280BB000003DB042 /* MacEditorTextView.swift */; };
+		92F657B9280BB000003DB042 /* TextFieldAppKit.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92F657B8280BB000003DB042 /* TextFieldAppKit.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		9218BABC280DB3E90068F3AF /* MacEditorTextView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MacEditorTextView.swift; sourceTree = "<group>"; };
 		928D96C5280A8F9300B6CE2E /* ButtonView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ButtonView.swift; sourceTree = "<group>"; };
 		928D96C7280AA58D00B6CE2E /* CalculatorView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalculatorView.swift; sourceTree = "<group>"; };
 		928D96C9280AA5E400B6CE2E /* SettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
@@ -34,7 +36,7 @@
 		92F447832808C1B600EC45D5 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 		92F447842808C25800EC45D5 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		92F447862808C3B000EC45D5 /* HelperFunctions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HelperFunctions.swift; sourceTree = "<group>"; };
-		92F657B8280BB000003DB042 /* MacEditorTextView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MacEditorTextView.swift; sourceTree = "<group>"; };
+		92F657B8280BB000003DB042 /* TextFieldAppKit.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextFieldAppKit.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -70,12 +72,13 @@
 			isa = PBXGroup;
 			children = (
 				92F447832808C1B600EC45D5 /* Info.plist */,
+				9218BABC280DB3E90068F3AF /* MacEditorTextView.swift */,
 				92F4476B28089FEE00EC45D5 /* CalculatorApp.swift */,
 				92F447842808C25800EC45D5 /* AppDelegate.swift */,
 				92F4476D28089FEE00EC45D5 /* ContentView.swift */,
 				928D96C9280AA5E400B6CE2E /* SettingsView.swift */,
 				928D96C7280AA58D00B6CE2E /* CalculatorView.swift */,
-				92F657B8280BB000003DB042 /* MacEditorTextView.swift */,
+				92F657B8280BB000003DB042 /* TextFieldAppKit.swift */,
 				928D96C5280A8F9300B6CE2E /* ButtonView.swift */,
 				92F447862808C3B000EC45D5 /* HelperFunctions.swift */,
 				92F4476F28089FF100EC45D5 /* Assets.xcassets */,
@@ -173,12 +176,13 @@
 			files = (
 				92F447872808C3B000EC45D5 /* HelperFunctions.swift in Sources */,
 				928D96CA280AA5E400B6CE2E /* SettingsView.swift in Sources */,
-				92F657B9280BB000003DB042 /* MacEditorTextView.swift in Sources */,
+				92F657B9280BB000003DB042 /* TextFieldAppKit.swift in Sources */,
 				928D96C8280AA58D00B6CE2E /* CalculatorView.swift in Sources */,
 				928D96C6280A8F9300B6CE2E /* ButtonView.swift in Sources */,
 				92F4476E28089FEE00EC45D5 /* ContentView.swift in Sources */,
 				92F447852808C25800EC45D5 /* AppDelegate.swift in Sources */,
 				92F4476C28089FEE00EC45D5 /* CalculatorApp.swift in Sources */,
+				9218BABD280DB3E90068F3AF /* MacEditorTextView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
