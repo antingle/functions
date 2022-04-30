@@ -57,9 +57,9 @@ struct CalculatorView: View {
         }).rotationEffect(Angle(degrees: 180)).scaleEffect(x: -1.0, y: 1.0, anchor: .center)
         
         
-        MacEditorTextView(text: $expression, placeholderText: "Calculate",
+        CustomMacTextView(placeholderText: "Calculate", text: $expression,
                           // Run when submmitting the text (hitting return)
-                          onCommit: {
+                          onSubmit: {
             do {
                 solution = try evaluateExpression(expression)
                 

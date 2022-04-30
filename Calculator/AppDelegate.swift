@@ -35,20 +35,24 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         statusBarItem?.button?.image = NSImage(systemSymbolName: "function", accessibilityDescription: "calculator")
         statusBarItem?.button?.action = #selector(AppDelegate.togglePopover(_:))
         
+        // enables global shortcut
         hotKey.keyDownHandler = {
             self.togglePopover(self)
         }
         
     }
+    
     @objc func showPopover(_ sender: AnyObject?) {
         if let button = statusBarItem?.button {
             popover.show(relativeTo: button.bounds, of: button, preferredEdge: NSRectEdge.minY)
             // !!! - displays the popover window with an offset in x in macOS BigSur.
         }
     }
+    
     @objc func closePopover(_ sender: AnyObject?) {
         popover.performClose(sender)
     }
+    
     @objc func togglePopover(_ sender: AnyObject?) {
         if popover.isShown {
             closePopover(sender)
