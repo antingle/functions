@@ -5,6 +5,8 @@
  *  https://twitter.com/tholanda
  *
  *  MIT license
+ *
+ *  Edited by Anthony Ingle
  */
 
 import Combine
@@ -116,6 +118,7 @@ extension MacEditorTextView {
                 self.parent.onCommit()
                 return true
             }
+            // keeping commented for future use
             //            } else if (commandSelector == #selector(NSResponder.deleteForward(_:))) {
             //                // Do something against DELETE key
             //                return true
@@ -166,7 +169,7 @@ final class CustomTextView: NSView {
         let scrollView = NSScrollView()
         scrollView.drawsBackground = false
         scrollView.borderType = .noBorder
-        scrollView.hasVerticalScroller = true
+        scrollView.hasVerticalScroller = false
         scrollView.hasHorizontalRuler = false
         scrollView.autoresizingMask = [.width, .height]
         scrollView.translatesAutoresizingMaskIntoConstraints = false

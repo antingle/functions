@@ -56,61 +56,36 @@ struct CalculatorView: View {
             })
         }).rotationEffect(Angle(degrees: 180)).scaleEffect(x: -1.0, y: 1.0, anchor: .center)
         
-        MacEditorTextView(text: $expression, placeholderText: "Calculate", isEditable: true, onEditingChanged: {}, onCommit: {do {
-            solution = try evaluateExpression(expression)
-            
-            // insert item into history
-            withAnimation(.spring()) {
-                let historyItem = History(expression: expression, solution: solution.removeZerosFromEnd())
-                history.insert(historyItem, at: 0)
+        
+        MacEditorTextView(text: $expression, placeholderText: "Calculate",
+                          // Run when submmitting the text (hitting return)
+                          onCommit: {
+            do {
+                solution = try evaluateExpression(expression)
                 
+                // insert item into history
+                withAnimation(.spring()) {
+                    let historyItem = History(expression: expression, solution: solution.removeZerosFromEnd())
+                    history.insert(historyItem, at: 0)
+                    
+                }
+                expression = ""
+                solution = 0
             }
-            expression = ""
-        }
             catch {
                 solution = 0
-            }}, onTextChange: {newExpression in
-                do {
-                    solution = try evaluateExpression(newExpression)
-                }
-                catch {
-                    solution = 0
-                } })
-        //        TextFieldAppKit("Calculate", text: $expression, nsFont: .systemFont(ofSize: 14))
-        //            .onCommit {
-        //                do {
-        //                    solution = try evaluateExpression(expression)
-        //
-        //                    // insert item into history
-        //                    withAnimation(.spring()) {
-        //                        let historyItem = History(expression: expression, solution: solution.removeZerosFromEnd())
-        //                        history.insert(historyItem, at: 0)
-        //
-        //                    }
-        //                    expression = ""
-        //                }
-        //                catch {
-        //                    solution = 0
-        //                }
-        //            }
-        //            .onChange(of: expression) { newExpression in
-        //                do {
-        //                    solution = try evaluateExpression(newExpression)
-        //                }
-        //                catch {
-        //                    solution = 0
-        //                }
-        //            }
-        //
-        // Expressions are typed in here
-        //        TextField("Calculate", text: $expression)
-        //            .textFieldStyle(.plain)
-        //            .onSubmit {
-        //
-        //            }
-        //
-        //            }
-        
+            }
+        },
+                          // Run on every update of the text
+                          onTextChange: { newExpression in
+            do {
+                solution = try evaluateExpression(newExpression)
+            }
+            catch {
+                solution = 0
+            }
+        })
+        .frame(height: 27) // MARK TODO: Make height-adjustable
         
         Text(solution == 0 ? " " : solution.removeZerosFromEnd())
             .font(.caption)
