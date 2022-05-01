@@ -15,6 +15,7 @@ struct History: Identifiable {
 }
 
 extension Double {
+    // removes zeros from the end of a Double when converting to String
     func removeZerosFromEnd() -> String {
         let formatter = NumberFormatter()
         let number = NSNumber(value: self)
@@ -51,7 +52,7 @@ struct CalcButtonStyle: ButtonStyle {
   }
 }
 
-extension View {
+extension Button {
   func calcButton(
     foregroundColor: Color = .white,
     backgroundColor: Color = .gray,

@@ -19,6 +19,9 @@ struct CustomMacTextView: NSViewRepresentable {
     var onTextChange    : (String) -> Void = { _ in }
     var onEditingChanged: () -> Void       = {}
     
+    var onMoveUp        : () -> Void       = {}
+    var onMoveDown      : () -> Void       = {}
+    
     func makeCoordinator() -> Coordinator {
         Coordinator(self)
     }
@@ -30,6 +33,7 @@ struct CustomMacTextView: NSViewRepresentable {
         textView.string = text
         textView.drawsBackground = false
         textView.font = font
+        textView.allowsUndo = true
         textView.placeholderText = placeholderText
         theTextView.hasVerticalScroller = false
         
@@ -56,6 +60,7 @@ extension CustomMacTextView {
         init(_ parent: CustomMacTextView) {
             self.parent = parent
         }
+        
         func textDidBeginEditing(_ notification: Notification) {
             guard let textView = notification.object as? NSTextView else {
                 return
@@ -92,8 +97,18 @@ extension CustomMacTextView {
         // handles commands
         func textView(_ textView: NSTextView, doCommandBy commandSelector: Selector) -> Bool {
             if (commandSelector == #selector(NSResponder.insertNewline(_:))) {
-                // Do something against ENTER key
+                // Do something when ENTER key pressed
                 self.parent.onSubmit()
+                return true
+                
+            } else if (commandSelector == #selector(NSResponder.moveUp(_:))) {
+                // Do something when UP ARROW pressed
+                self.parent.onMoveUp()
+                return true
+                
+            } else if (commandSelector == #selector(NSResponder.moveDown(_:))) {
+                // Do something when DOWN ARROW pressed
+                self.parent.onMoveDown()
                 return true
             }
             

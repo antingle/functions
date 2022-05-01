@@ -11,6 +11,9 @@ struct CalculatorView: View {
     @Binding var expression: String
     @Binding var solution: Double
     @Binding var history: [History]
+    
+    @State private var historyIndex: Int = -1
+    
     var body: some View {
         
         // this is an upside down scroll view to show history
@@ -58,9 +61,10 @@ struct CalculatorView: View {
         
         
         CustomMacTextView(placeholderText: "Calculate", text: $expression,
-                          // Run when submmitting the text (hitting return)
+                          // on ENTER key press
                           onSubmit: {
             do {
+                historyIndex = -1
                 solution = try evaluateExpression(expression)
                 
                 // insert item into history
@@ -76,13 +80,46 @@ struct CalculatorView: View {
                 solution = 0
             }
         },
-                          // Run on every update of the text
+                          // On every update of the text by keyboard
                           onTextChange: { newExpression in
             do {
+                historyIndex = -1 // reset the history index counter for arrow keys
                 solution = try evaluateExpression(newExpression)
             }
             catch {
                 solution = 0
+            }
+        },
+                          // on UP ARROW key
+                          onMoveUp: {
+            // check that history array is not empty and history index does not go out of bounds
+            if (!history.isEmpty && historyIndex < history.count - 1)
+            {
+                historyIndex += 1
+                
+                // if incrementing history, remove the number of characters of previous addition
+                if historyIndex > 0 {
+                    expression.removeLast(history[historyIndex - 1].solution.count)
+                }
+                    expression += history[historyIndex].solution
+            }
+            
+        },
+                          // on DOWN ARROW key
+                          onMoveDown: {
+            if (!history.isEmpty)
+            {
+                // check if UP ARROW has been pressed yet
+                if historyIndex != -1 {
+                    // if decrementing history, remove the number of characters of previous addition
+                    expression.removeLast(history[historyIndex].solution.count)
+                    historyIndex -= 1
+                    
+                    // if we are not at the beginning of history, add the next solution in
+                    if historyIndex != -1 {
+                        expression += history[historyIndex].solution
+                    }
+                }
             }
         })
         .frame(height: 27) // MARK TODO: Make height-adjustable
@@ -92,6 +129,6 @@ struct CalculatorView: View {
             .frame(maxWidth: .infinity, alignment: .trailing)
             .foregroundColor(.gray)
         
-        ButtonView(expression: $expression, history: $history)
+        ButtonView(expression: $expression, history: $history, historyIndex: $historyIndex)
     }
 }

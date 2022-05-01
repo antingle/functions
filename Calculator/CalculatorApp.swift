@@ -21,4 +21,3 @@ struct CalculatorApp: App {
         }
     }
 }
-
