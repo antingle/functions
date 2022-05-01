@@ -82,6 +82,15 @@ struct CalculatorView: View {
         },
                           // On every update of the text by keyboard
                           onTextChange: { newExpression in
+            if !history.isEmpty &&
+                (newExpression == "+" ||
+                newExpression == "*" ||
+                newExpression == "/" ||
+                newExpression == "^" ||
+                newExpression == "%")
+            {
+                expression.insert(contentsOf: history[0].solution, at: expression.startIndex)
+            }
             do {
                 historyIndex = -1 // reset the history index counter for arrow keys
                 solution = try evaluateExpression(newExpression)
