@@ -30,6 +30,7 @@ struct CalculatorView: View {
                                 .onTapGesture {
                                     expression += item.solution
                                 }
+                                .foregroundColor(historyIndex != -1 ? (item.id == history[historyIndex].id ? .blue : .white) : .white)
                             
                             // copy solution button
                             Button {
@@ -84,10 +85,10 @@ struct CalculatorView: View {
                           onTextChange: { newExpression in
             if !history.isEmpty &&
                 (newExpression == "+" ||
-                newExpression == "*" ||
-                newExpression == "/" ||
-                newExpression == "^" ||
-                newExpression == "%")
+                 newExpression == "*" ||
+                 newExpression == "/" ||
+                 newExpression == "^" ||
+                 newExpression == "%")
             {
                 expression.insert(contentsOf: history[0].solution, at: expression.startIndex)
             }
@@ -110,9 +111,8 @@ struct CalculatorView: View {
                 if historyIndex > 0 {
                     expression.removeLast(history[historyIndex - 1].solution.count)
                 }
-                    expression += history[historyIndex].solution
+                expression += history[historyIndex].solution
             }
-            
         },
                           // on DOWN ARROW key
                           onMoveDown: {
