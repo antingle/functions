@@ -54,8 +54,8 @@ struct CalcButtonStyle: ButtonStyle {
 
 extension Button {
   func calcButton(
-    foregroundColor: Color = .white,
-    backgroundColor: Color = .gray,
+    foregroundColor: Color = .primary,
+    backgroundColor: Color = .secondary,
     pressedColor: Color = .accentColor
   ) -> some View {
     self.buttonStyle(
@@ -66,4 +66,17 @@ extension Button {
       )
     )
   }
+}
+
+extension View {
+    
+    @discardableResult
+    func openInWindow(title: String, sender: Any?) -> NSWindow {
+        let controller = NSHostingController(rootView: self)
+        let win = NSWindow(contentViewController: controller)
+        win.contentViewController = controller
+        win.title = title
+        win.makeKeyAndOrderFront(sender)
+        return win
+    }
 }

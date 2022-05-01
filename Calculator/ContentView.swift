@@ -8,23 +8,12 @@
 import SwiftUI
 import Expression
 struct ContentView: View {
-   
     @State private var showingSettings = false
-    @State private var expression: String = ""
-    @State private var solution: Double = 0.0
-    @State private var history: [History] = []
     
     var body: some View {
         VStack {
             
-            if showingSettings {
-                SettingsView()
-                    .padding(.top)
-                Spacer()
-            }
-            else {
-                CalculatorView(expression: $expression, solution: $solution, history: $history)
-        }
+            CalculatorView()
             
             HStack {
                 Text("Menu Bar Calc")
@@ -39,8 +28,17 @@ struct ContentView: View {
                     Image(systemName: "gearshape")
                 }
                 .buttonStyle(.plain)
+                .popover(isPresented: $showingSettings, content: {
+                    SettingsView().padding()
+                })
+                Button {
+                    NSApp.sendAction(#selector(AppDelegate.openCalculatorWindow), to: nil, from:nil)
+                } label: {
+                    Image(systemName: "macwindow")
+                }
+                .buttonStyle(.plain)
             }
-                .padding(.top, 8)
+            .padding(.top, 8)
             
         }
         .padding([.horizontal, .bottom])

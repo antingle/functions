@@ -14,6 +14,27 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     var popover = NSPopover.init()
     var statusBarItem: NSStatusItem?
     static var shared : AppDelegate!
+    
+    var window: NSWindow!
+
+        @objc func openCalculatorWindow() {
+            if nil == window {      // create once !!
+                window = NSWindow(
+                    contentRect: NSRect(x: 20, y: 20, width: 300, height: 500),
+                    styleMask: [.titled, .closable, .miniaturizable, .resizable, .fullSizeContentView],
+                    backing: .buffered,
+                    defer: false)
+                window.titlebarAppearsTransparent = true
+                window.collectionBehavior = .fullScreenPrimary
+                window.title = "Menu Bar Calc"
+                window.center()
+                window.setFrameAutosaveName("Calculator")
+                window.isReleasedWhenClosed = false
+                window.contentView = NSHostingView(rootView: ContentView())
+            }
+            window.makeKeyAndOrderFront(nil)
+        }
+    
     func applicationDidFinishLaunching(_ notification: Notification) {
         
         // close window on launch
