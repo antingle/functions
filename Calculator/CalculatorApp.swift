@@ -23,16 +23,6 @@ struct CalculatorApp: App {
         WindowGroup {
             ContentView()
                 .environmentObject(historyStore)
-                .onAppear {
-                    HistoryStore.load { result in
-                        switch result {
-                        case .failure(let error):
-                            fatalError(error.localizedDescription)
-                        case .success(let history):
-                            historyStore.history = history
-                        }
-                    }
-                }
         }
     }
 }
