@@ -102,6 +102,7 @@ struct CalculatorView: View {
                     solution = try evaluateExpression(newExpression)
                 }
                 catch {
+                    print(error)
                     solution = 0
                 }
             })

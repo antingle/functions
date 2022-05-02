@@ -54,6 +54,37 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		923A7B63282046C3008BCD74 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				925E913F281D02AC0027E183 /* CustomMacTextView.swift */,
+				92F4476D28089FEE00EC45D5 /* ContentView.swift */,
+				928D96C9280AA5E400B6CE2E /* SettingsView.swift */,
+				928D96C7280AA58D00B6CE2E /* CalculatorView.swift */,
+				92AA9001281EEBEA008C9EC8 /* HistoryView.swift */,
+				928D96C5280A8F9300B6CE2E /* ButtonView.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		923A7B64282046E2008BCD74 /* Main */ = {
+			isa = PBXGroup;
+			children = (
+				92F4476B28089FEE00EC45D5 /* CalculatorApp.swift */,
+				92F447842808C25800EC45D5 /* AppDelegate.swift */,
+			);
+			path = Main;
+			sourceTree = "<group>";
+		};
+		923A7B6528204705008BCD74 /* Helpers */ = {
+			isa = PBXGroup;
+			children = (
+				92F447862808C3B000EC45D5 /* HelperFunctions.swift */,
+				92AA9003281F802C008C9EC8 /* History.swift */,
+			);
+			path = Helpers;
+			sourceTree = "<group>";
+		};
 		92F4475F28089FEE00EC45D5 = {
 			isa = PBXGroup;
 			children = (
@@ -74,16 +105,9 @@
 			isa = PBXGroup;
 			children = (
 				92F447832808C1B600EC45D5 /* Info.plist */,
-				925E913F281D02AC0027E183 /* CustomMacTextView.swift */,
-				92F4476B28089FEE00EC45D5 /* CalculatorApp.swift */,
-				92F447842808C25800EC45D5 /* AppDelegate.swift */,
-				92F4476D28089FEE00EC45D5 /* ContentView.swift */,
-				928D96C9280AA5E400B6CE2E /* SettingsView.swift */,
-				928D96C7280AA58D00B6CE2E /* CalculatorView.swift */,
-				92AA9001281EEBEA008C9EC8 /* HistoryView.swift */,
-				928D96C5280A8F9300B6CE2E /* ButtonView.swift */,
-				92F447862808C3B000EC45D5 /* HelperFunctions.swift */,
-				92AA9003281F802C008C9EC8 /* History.swift */,
+				923A7B64282046E2008BCD74 /* Main */,
+				923A7B63282046C3008BCD74 /* Views */,
+				923A7B6528204705008BCD74 /* Helpers */,
 				92F4476F28089FF100EC45D5 /* Assets.xcassets */,
 				92F4477428089FF100EC45D5 /* Calculator.entitlements */,
 				92F4477128089FF100EC45D5 /* Preview Content */,
