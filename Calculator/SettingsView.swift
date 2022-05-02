@@ -6,15 +6,38 @@
 //
 
 import SwiftUI
+import AudioToolbox
 
 struct SettingsView: View {
+    @EnvironmentObject var historyStore: HistoryStore
+    
     var body: some View {
-        VStack(alignment: .leading) {
-            HStack {
-                Button("Quit Application") {
-                    NSApplication.shared.terminate(nil)
+        VStack(alignment: .leading, spacing: 10) {
+            Button {
+                withAnimation(.easeOut(duration: 0.1)) {
+                    historyStore.history = []
+                    HistoryStore.save(history: historyStore.history) { result in
+                        if case .failure(let error) = result {
+                            fatalError(error.localizedDescription)
+                        }
+                        AudioServicesPlaySystemSound(0xf) // plays dock item poof sound
+                    }
                 }
+            } label: {
+                Image(systemName: "trash")
+                Text("Clear History")
             }
+            .buttonStyle(.plain)
+            .frame(maxWidth: .infinity)
+            
+            Button {
+                NSApplication.shared.terminate(nil)
+            } label: {
+                Image(systemName: "clear")
+                Text("Quit")
+            }
+            .buttonStyle(.plain)
+            .foregroundColor(.red)
         }
     }
 }

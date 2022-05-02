@@ -8,10 +8,16 @@
 import SwiftUI
 import Expression
 
-struct History: Identifiable {
-    let id = UUID()
-    var expression: String
-    var solution: String
+func evaluateExpression(_ givenExpression: String) throws -> Double {
+    var solution: Double = 0;
+    
+    // ability to use ^ as a power operator
+    let expression = Expression(givenExpression, symbols: [
+        .infix("^"): { params in pow(params[0], params[1]) },
+    ])
+    solution = try expression.evaluate()
+    
+    return solution;
 }
 
 extension Double {
@@ -23,18 +29,6 @@ extension Double {
         formatter.maximumFractionDigits = 16 // maximum digits in Double after dot (maximum precision)
         return String(formatter.string(from: number) ?? "")
     }
-}
-
-func evaluateExpression(_ givenExpression: String) throws -> Double {
-    var solution: Double = 0;
-    
-    // ability to use ^ as a power operator
-    let expression = Expression(givenExpression, symbols: [
-        .infix("^"): { params in pow(params[0], params[1]) },
-    ])
-    solution = try expression.evaluate()
-    
-    return solution;
 }
 
 struct CalcButtonStyle: ButtonStyle {
@@ -66,17 +60,4 @@ extension Button {
       )
     )
   }
-}
-
-extension View {
-    
-    @discardableResult
-    func openInWindow(title: String, sender: Any?) -> NSWindow {
-        let controller = NSHostingController(rootView: self)
-        let win = NSWindow(contentViewController: controller)
-        win.contentViewController = controller
-        win.title = title
-        win.makeKeyAndOrderFront(sender)
-        return win
-    }
 }

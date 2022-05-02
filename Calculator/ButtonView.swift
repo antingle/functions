@@ -9,8 +9,8 @@ import SwiftUI
 
 struct ButtonView: View {
     @Binding var expression: String
-    @Binding var history: [History]
     @Binding var historyIndex: Int
+    @EnvironmentObject var historyStore: HistoryStore
     
     var body: some View {
         HStack {
@@ -50,15 +50,15 @@ struct ButtonView: View {
             
             Button {
                 // check that history array is not empty and history index does not go out of bounds
-                if (!history.isEmpty && historyIndex < history.count - 1)
+                if (!historyStore.history.isEmpty && historyIndex < historyStore.history.count - 1)
                 {
                     historyIndex += 1
                     
                     // if incrementing history, remove the number of characters of previous addition
                     if historyIndex > 0 {
-                        expression.removeLast(history[historyIndex - 1].solution.count)
+                        expression.removeLast(historyStore.history[historyIndex - 1].solution.count)
                     }
-                    expression += history[historyIndex].solution
+                    expression += historyStore.history[historyIndex].solution
                 }
             } label: {
                 Image(systemName: "arrow.up")
@@ -95,17 +95,17 @@ struct ButtonView: View {
             
             Button {
                 
-                if (!history.isEmpty)
+                if (!historyStore.history.isEmpty)
                 {
                     // check if UP ARROW has been pressed yet
                     if historyIndex != -1 {
                         // if decrementing history, remove the number of characters of previous addition
-                        expression.removeLast(history[historyIndex].solution.count)
+                        expression.removeLast(historyStore.history[historyIndex].solution.count)
                         historyIndex -= 1
                         
                         // if we are not at the beginning of history, add the next solution in
                         if historyIndex != -1 {
-                            expression += history[historyIndex].solution
+                            expression += historyStore.history[historyIndex].solution
                         }
                     }
                 }
@@ -146,9 +146,9 @@ struct ButtonView: View {
     }
     
     func addAnswer() {
-        if (!history.isEmpty)
+        if (!historyStore.history.isEmpty)
         {
-            expression += history[0].solution
+            expression += historyStore.history[0].solution
         }
     }
 }

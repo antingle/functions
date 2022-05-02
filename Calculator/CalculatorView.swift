@@ -8,16 +8,16 @@
 import SwiftUI
 
 struct CalculatorView: View {
+    @EnvironmentObject var historyStore: HistoryStore
     @State private var expression: String = ""
     @State private var solution: Double = 0.0
-    @State private var history: [History] = []
     @State private var historyIndex: Int = -1
     
     var body: some View {
         
         VStack {
             // A view to show all previous solutions and expressions
-            HistoryView(expression: $expression, history: $history, historyIndex: $historyIndex)
+            HistoryView(expression: $expression, historyIndex: $historyIndex)
             
             // An NSTextField wrapped as a SwiftUI view
             CustomMacTextView(placeholderText: "Calculate", text: $expression,
@@ -30,15 +30,22 @@ struct CalculatorView: View {
                     // insert item into history
                     withAnimation(.spring()) {
                         let historyItem = History(expression: expression, solution: solution.removeZerosFromEnd())
-                        history.insert(historyItem, at: 0)
-                        
+                        historyStore.history.insert(historyItem, at: 0)
                     }
                     expression = ""
                     solution = 0
+                    
+                    // save history
+                    HistoryStore.save(history: historyStore.history) { result in
+                        if case .failure(let error) = result {
+                            fatalError(error.localizedDescription)
+                        }
+                    }
                 }
                 catch {
                     solution = 0
                 }
+                
             },
                               // On every update of the textfield by keyboard
                               onTextChange: { newExpression in
@@ -47,30 +54,30 @@ struct CalculatorView: View {
                               // on UP ARROW key
                               onMoveUp: {
                 // check that history array is not empty and history index does not go out of bounds
-                if (!history.isEmpty && historyIndex < history.count - 1)
+                if (!historyStore.history.isEmpty && historyIndex < historyStore.history.count - 1)
                 {
                     historyIndex += 1
                     
                     // if incrementing history, remove the number of characters of previous addition
                     if historyIndex > 0 {
-                        expression.removeLast(history[historyIndex - 1].solution.count)
+                        expression.removeLast(historyStore.history[historyIndex - 1].solution.count)
                     }
-                    expression += history[historyIndex].solution
+                    expression += historyStore.history[historyIndex].solution
                 }
             },
                               // on DOWN ARROW key
                               onMoveDown: {
-                if (!history.isEmpty)
+                if (!historyStore.history.isEmpty)
                 {
                     // check if UP ARROW has been pressed yet
                     if historyIndex != -1 {
                         // if decrementing history, remove the number of characters of previous addition
-                        expression.removeLast(history[historyIndex].solution.count)
+                        expression.removeLast(historyStore.history[historyIndex].solution.count)
                         historyIndex -= 1
                         
                         // if we are not at the beginning of history, add the next solution in
                         if historyIndex != -1 {
-                            expression += history[historyIndex].solution
+                            expression += historyStore.history[historyIndex].solution
                         }
                     }
                 }
@@ -81,14 +88,14 @@ struct CalculatorView: View {
             .onChange(of: expression, perform: { newExpression in
                 
                 // insert previous solution if these operators used first
-                if !history.isEmpty &&
+                if !historyStore.history.isEmpty &&
                     (newExpression == "+" ||
                      newExpression == "*" ||
                      newExpression == "/" ||
                      newExpression == "^" ||
                      newExpression == "%")
                 {
-                    expression.insert(contentsOf: history[0].solution, at: expression.startIndex)
+                    expression.insert(contentsOf: historyStore.history[0].solution, at: expression.startIndex)
                 }
                 
                 do {
@@ -106,7 +113,7 @@ struct CalculatorView: View {
                 .foregroundColor(.gray)
             
             // A view for all the buttons at the bottom
-            ButtonView(expression: $expression, history: $history, historyIndex: $historyIndex)
+            ButtonView(expression: $expression, historyIndex: $historyIndex)
         }
     }
 }

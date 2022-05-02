@@ -9,8 +9,8 @@ import SwiftUI
 
 struct HistoryView: View {
     @Binding var expression: String
-    @Binding var history: [History]
     @Binding var historyIndex: Int
+    @EnvironmentObject var historyStore: HistoryStore
     
     var body: some View {
         // this is an upside down scroll view to show history of expressions and solutions
@@ -18,7 +18,7 @@ struct HistoryView: View {
             LazyVStack(alignment: .center, spacing: nil, content: {
                 
                 // this is reversed order since it is flipped
-                ForEach(history) { item in
+                ForEach(historyStore.history) { item in
                     VStack {
                         HStack {
                             Text(item.solution)
@@ -27,7 +27,7 @@ struct HistoryView: View {
                                 .onTapGesture {
                                     expression += item.solution
                                 }
-                                .foregroundColor(historyIndex != -1 ? (item.id == history[historyIndex].id ? .accentColor : .primary) : .primary)
+                                .foregroundColor(historyIndex != -1 ? (item.id == historyStore.history[historyIndex].id ? .accentColor : .primary) : .primary)
                             
                             // copy solution button
                             Button {

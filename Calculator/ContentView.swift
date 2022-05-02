@@ -9,11 +9,12 @@ import SwiftUI
 import Expression
 struct ContentView: View {
     @State private var showingSettings = false
+    @StateObject private var store = HistoryStore()
     
     var body: some View {
         VStack {
             
-            CalculatorView()
+            CalculatorView() 
             
             HStack {
                 Text("Menu Bar Calc")
@@ -43,6 +44,17 @@ struct ContentView: View {
         }
         .padding([.horizontal, .bottom])
         .frame(maxWidth: .infinity, maxHeight: .infinity)
+        .environmentObject(store)
+        .onAppear {
+            HistoryStore.load { result in
+                switch result {
+                case .failure(let error):
+                    fatalError(error.localizedDescription)
+                case .success(let history):
+                    store.history = history
+                }
+            }
+        }
     }
 }
 
