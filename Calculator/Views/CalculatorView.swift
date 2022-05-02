@@ -22,6 +22,7 @@ struct CalculatorView: View {
             
             // An NSTextField wrapped as a SwiftUI view
             CustomMacTextView(placeholderText: "Calculate", text: $expression,
+                              
                               // on ENTER key press
                               onSubmit: {
                 do {
@@ -52,6 +53,7 @@ struct CalculatorView: View {
                               onTextChange: { newExpression in
                 historyIndex = -1 // reset history counter when keyboard used
             },
+                              
                               // on UP ARROW key
                               onMoveUp: {
                 // check that history array is not empty and history index does not go out of bounds
@@ -66,6 +68,7 @@ struct CalculatorView: View {
                     expression += historyStore.history[historyIndex].solution
                 }
             },
+                              
                               // on DOWN ARROW key
                               onMoveDown: {
                 if (!historyStore.history.isEmpty)
@@ -119,5 +122,13 @@ struct CalculatorView: View {
             // A view for all the buttons at the bottom
             ButtonView(expression: $expression, historyIndex: $historyIndex)
         }
+    }
+}
+
+struct Previews_CalculatorView_Previews: PreviewProvider {
+    static var previews: some View {
+        CalculatorView()
+            .environmentObject(HistoryStore())
+            .frame(width: 280)
     }
 }

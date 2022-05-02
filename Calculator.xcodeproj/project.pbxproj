@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		923A7B67282053D7008BCD74 /* ViewExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 923A7B66282053D7008BCD74 /* ViewExtensions.swift */; };
 		925E9140281D02AC0027E183 /* CustomMacTextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 925E913F281D02AC0027E183 /* CustomMacTextView.swift */; };
 		928D96C6280A8F9300B6CE2E /* ButtonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 928D96C5280A8F9300B6CE2E /* ButtonView.swift */; };
 		928D96C8280AA58D00B6CE2E /* CalculatorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 928D96C7280AA58D00B6CE2E /* CalculatorView.swift */; };
@@ -24,6 +25,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		923A7B66282053D7008BCD74 /* ViewExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewExtensions.swift; sourceTree = "<group>"; };
 		925E913F281D02AC0027E183 /* CustomMacTextView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomMacTextView.swift; sourceTree = "<group>"; };
 		928D96C5280A8F9300B6CE2E /* ButtonView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ButtonView.swift; sourceTree = "<group>"; };
 		928D96C7280AA58D00B6CE2E /* CalculatorView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalculatorView.swift; sourceTree = "<group>"; };
@@ -80,6 +82,7 @@
 			isa = PBXGroup;
 			children = (
 				92F447862808C3B000EC45D5 /* HelperFunctions.swift */,
+				923A7B66282053D7008BCD74 /* ViewExtensions.swift */,
 				92AA9003281F802C008C9EC8 /* History.swift */,
 			);
 			path = Helpers;
@@ -201,6 +204,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				923A7B67282053D7008BCD74 /* ViewExtensions.swift in Sources */,
 				92F447872808C3B000EC45D5 /* HelperFunctions.swift in Sources */,
 				928D96CA280AA5E400B6CE2E /* SettingsView.swift in Sources */,
 				928D96C8280AA58D00B6CE2E /* CalculatorView.swift in Sources */,

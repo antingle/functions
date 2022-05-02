@@ -7,6 +7,7 @@
 
 import SwiftUI
 import Expression
+
 struct ContentView: View {
     @State private var showingSettings = false
     @EnvironmentObject var historyStore: HistoryStore
@@ -61,6 +62,7 @@ struct ContentView: View {
 struct ContentView_Previews: PreviewProvider {
     static var previews: some View {
         ContentView()
-            .frame(width: 300.0)
+            .environmentObject(HistoryStore())
+            .frame(width: 280, height: 460)
     }
 }

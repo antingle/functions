@@ -126,7 +126,7 @@ fileprivate class PlaceholderNSTextView: NSTextView {
         didSet {
             var attributes = [NSAttributedString.Key: AnyObject]()
             attributes[.font] = font
-            attributes[.foregroundColor] = NSColor.gray
+            attributes[.foregroundColor] = NSColor.darkGray
             let captionAttributedString = NSAttributedString(string: placeholderText ?? "", attributes: attributes)
             placeholderAttributedString = captionAttributedString
         }

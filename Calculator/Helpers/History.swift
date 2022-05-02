@@ -5,7 +5,6 @@
 //  Created by Anthony Ingle on 5/1/22.
 //
 
-import Foundation
 import SwiftUI
 
 struct History: Identifiable, Codable {
