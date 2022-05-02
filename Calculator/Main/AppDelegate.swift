@@ -17,26 +17,31 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     private var historyStore = HistoryStore() // Environment Object for History
     
     var window: NSWindow!
-
-        @objc func openCalculatorWindow() {
-            if nil == window {      // create once !!
-                window = NSWindow(
-                    contentRect: NSRect(x: 20, y: 20, width: 280, height: 460),
-                    styleMask: [.titled, .closable, .miniaturizable, .resizable, .fullSizeContentView],
-                    backing: .buffered,
-                    defer: false)
-                // MARK TODO: does this not limit window size?
-                // window.contentMinSize = NSSize(width: 200, height: 300)
-                window.titlebarAppearsTransparent = true
-                window.collectionBehavior = .fullScreenPrimary
-                window.title = "Menu Bar Calc"
-                window.center()
-                window.setFrameAutosaveName("Calculator")
-                window.isReleasedWhenClosed = false
-                window.contentView = NSHostingView(rootView: ContentView().environmentObject(historyStore))
-            }
-            window.makeKeyAndOrderFront(nil)
+    
+    @objc func openCalculatorWindow() {
+        
+        let contentView = WindowView()
+            .environmentObject(historyStore)
+        
+        if nil == window {      // create once !!
+            window = NSWindow(
+                contentRect: NSRect(x: 0, y: 0, width: 280, height: 460),
+                styleMask: [.titled, .closable, .miniaturizable, .resizable, .fullSizeContentView],
+                backing: .buffered,
+                defer: false)
+            window.isOpaque = false
+            window.titlebarAppearsTransparent = true
+            window.collectionBehavior = .fullScreenPrimary
+            window.title = "Menu Bar Calc"
+            window.titleVisibility = .hidden // looks better without a title?
+            window.center()
+            window.setFrameAutosaveName("Calculator")
+            window.isReleasedWhenClosed = false
+            window.contentView = NSHostingView(rootView: contentView)
         }
+        window.makeKeyAndOrderFront(nil)
+        window.orderFrontRegardless()
+    }
     
     func applicationDidFinishLaunching(_ notification: Notification) {
         

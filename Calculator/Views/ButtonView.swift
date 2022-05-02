@@ -18,7 +18,8 @@ struct ButtonView: View {
                 Button("C") {
                     expression = ""
                     historyIndex = -1
-                }.calcButton(backgroundColor: Color.accentColor)
+                }.calcButton(backgroundColor: Color.accentColor,
+                             pressedColor: Color(nsColor: .tertiaryLabelColor))
                 
                 Button {
                     expression += "+"
@@ -176,6 +177,7 @@ struct ButtonView: View {
                 }.calcButton()
             }
         }
+        .frame(maxWidth: 600)
     }
     
     private func addAnswer() {
