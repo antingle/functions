@@ -18,9 +18,8 @@ struct ButtonView: View {
                 expression = ""
                 historyIndex = -1
             }.calcButton()
-                
+            
             Button {
-                expression == "" ? addAnswer() : nil
                 expression += "+"
                 historyIndex = -1
             } label: {
@@ -36,7 +35,6 @@ struct ButtonView: View {
             }.calcButton()
             
             Button() {
-                expression == "" ? addAnswer() : nil
                 expression += "*"
                 historyIndex = -1
             } label: {
@@ -44,7 +42,6 @@ struct ButtonView: View {
             }.calcButton()
             
             Button {
-                expression == "" ? addAnswer() : nil
                 expression += "/"
                 historyIndex = -1
             } label: {
@@ -61,7 +58,7 @@ struct ButtonView: View {
                     if historyIndex > 0 {
                         expression.removeLast(history[historyIndex - 1].solution.count)
                     }
-                        expression += history[historyIndex].solution
+                    expression += history[historyIndex].solution
                 }
             } label: {
                 Image(systemName: "arrow.up")
@@ -82,7 +79,6 @@ struct ButtonView: View {
             }.calcButton()
             
             Button ("^") {
-                expression == "" ? addAnswer() : nil
                 expression += "^"
                 historyIndex = -1
             }.calcButton()
@@ -118,29 +114,35 @@ struct ButtonView: View {
             }.calcButton()
         }
         
-            HStack {
-                Button ("sin(x)") {
-                    expression += "sin("
-                }.calcButton()
-                Button ("cos(x)") {
-                    expression += "cos("
-                }.calcButton()
-                Button ("tan(x)") {
-                    expression += "tan("
-                }.calcButton()
-            }
-
-            HStack {
-                Button ("asin(x)") {
-                    expression += "asin("
-                }.calcButton()
-                Button ("acos(x)") {
-                    expression += "acos("
-                }.calcButton()
-                Button ("atan(x)") {
-                    expression += "atan("
-                }.calcButton()
-            }
+        HStack {
+            Button ("sin(x)") {
+                expression += "sin("
+                historyIndex = -1
+            }.calcButton()
+            Button ("cos(x)") {
+                expression += "cos("
+                historyIndex = -1
+            }.calcButton()
+            Button ("tan(x)") {
+                expression += "tan("
+                historyIndex = -1
+            }.calcButton()
+        }
+        
+        HStack {
+            Button ("asin(x)") {
+                expression += "asin("
+                historyIndex = -1
+            }.calcButton()
+            Button ("acos(x)") {
+                expression += "acos("
+                historyIndex = -1
+            }.calcButton()
+            Button ("atan(x)") {
+                expression += "atan("
+                historyIndex = -1
+            }.calcButton()
+        }
     }
     
     func addAnswer() {

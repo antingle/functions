@@ -40,24 +40,9 @@ struct CalculatorView: View {
                     solution = 0
                 }
             },
-                              // On every update of the text by keyboard
+                              // On every update of the textfield by keyboard
                               onTextChange: { newExpression in
-                if !history.isEmpty &&
-                    (newExpression == "+" ||
-                     newExpression == "*" ||
-                     newExpression == "/" ||
-                     newExpression == "^" ||
-                     newExpression == "%")
-                {
-                    expression.insert(contentsOf: history[0].solution, at: expression.startIndex)
-                }
-                do {
-                    historyIndex = -1 // reset the history index counter for arrow keys
-                    solution = try evaluateExpression(newExpression)
-                }
-                catch {
-                    solution = 0
-                }
+                historyIndex = -1 // reset history counter when keyboard used
             },
                               // on UP ARROW key
                               onMoveUp: {
@@ -91,6 +76,28 @@ struct CalculatorView: View {
                 }
             })
             .frame(height: 27) // MARK TODO: Make height-adjustable
+            
+            // will always run on change of expression variable
+            .onChange(of: expression, perform: { newExpression in
+                
+                // insert previous solution if these operators used first
+                if !history.isEmpty &&
+                    (newExpression == "+" ||
+                     newExpression == "*" ||
+                     newExpression == "/" ||
+                     newExpression == "^" ||
+                     newExpression == "%")
+                {
+                    expression.insert(contentsOf: history[0].solution, at: expression.startIndex)
+                }
+                
+                do {
+                    solution = try evaluateExpression(newExpression)
+                }
+                catch {
+                    solution = 0
+                }
+            })
             
             // Live solution shower
             Text(solution == 0 ? " " : solution.removeZerosFromEnd())
