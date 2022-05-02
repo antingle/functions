@@ -11,13 +11,16 @@ import Expression
 func evaluateExpression(_ givenExpression: String) throws -> Double {
     var solution: Double = 0
     
-    // ability to use ^ as a power operator
+        // extra symbols, variables, and functions are defined here
     let expression = Expression(givenExpression, symbols: [
-        .infix("^"): { params in pow(params[0], params[1]) },       // raising to the power
-        .infix("--"): { params in params[0] + params[1] },          // double negative
-        .variable("e"): { _ in Darwin.M_E },                        // euler's number
-        .function("ln", arity: 1): { params in log(params[0]) },    // natural log
-        .function("log", arity: 1): { params in log10(params[0]) },    // natural log
+        .infix("^"): { params in pow(params[0], params[1]) },           // raising to the power
+        .infix("--"): { params in params[0] + params[1] },              // double negative
+        
+        .variable("e"): { _ in Darwin.M_E },                            // euler's number
+        .variable("π"): { _ in .pi },                                   // pi symbol
+        
+        .function("ln", arity: 1): { params in log(params[0]) },        // natural log
+        .function("log", arity: 1): { params in log10(params[0]) },     // log base 10
     ])
     
     solution = try expression.evaluate()

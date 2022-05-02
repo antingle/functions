@@ -45,7 +45,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         
         // Set the SwiftUI's ContentView to the Popover's ContentViewController
         popover.behavior = .transient
-        popover.animates = false
+        popover.animates = true
         popover.contentViewController = NSViewController()
         popover.contentViewController?.view = NSHostingView(rootView: ContentView().environmentObject(historyStore))
         popover.contentViewController?.view.window?.makeKey()

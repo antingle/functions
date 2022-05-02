@@ -11,7 +11,8 @@ struct CalculatorView: View {
     @EnvironmentObject var historyStore: HistoryStore
     @State private var expression: String = ""
     @State private var solution: Double = 0.0
-    @State private var historyIndex: Int = -1
+    @State private var historyIndex: Int = -1           // keeps track of place in history when cycling
+    @State private var expressionIsValid: Bool = false  // used to show live solution
     
     var body: some View {
         
@@ -100,18 +101,20 @@ struct CalculatorView: View {
                 
                 do {
                     solution = try evaluateExpression(newExpression)
+                    expressionIsValid = true
                 }
                 catch {
                     print(error)
+                    expressionIsValid = false
                     solution = 0
                 }
             })
             
             // Live solution shower
-            Text(solution == 0 ? " " : solution.removeZerosFromEnd())
+            Text(expressionIsValid ? solution.removeZerosFromEnd() : " ")
                 .font(.caption)
                 .frame(maxWidth: .infinity, alignment: .trailing)
-                .foregroundColor(.gray)
+                .foregroundColor(.secondary)
             
             // A view for all the buttons at the bottom
             ButtonView(expression: $expression, historyIndex: $historyIndex)
