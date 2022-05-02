@@ -9,7 +9,7 @@ import SwiftUI
 import Expression
 struct ContentView: View {
     @State private var showingSettings = false
-    @StateObject private var store = HistoryStore()
+    @EnvironmentObject var historyStore: HistoryStore
     
     var body: some View {
         VStack {
@@ -44,17 +44,6 @@ struct ContentView: View {
         }
         .padding([.horizontal, .bottom])
         .frame(maxWidth: .infinity, maxHeight: .infinity)
-        .environmentObject(store)
-        .onAppear {
-            HistoryStore.load { result in
-                switch result {
-                case .failure(let error):
-                    fatalError(error.localizedDescription)
-                case .success(let history):
-                    store.history = history
-                }
-            }
-        }
     }
 }
 

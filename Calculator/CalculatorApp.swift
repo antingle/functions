@@ -9,6 +9,10 @@ import SwiftUI
 
 @main
 struct CalculatorApp: App {
+    // MARK TODO: This Environment object is different than what is created in the AppDelegate
+    // however, the first window in WindowGroup is closed right away. Hacky solution...
+    @StateObject private var historyStore = HistoryStore()
+    
     @NSApplicationDelegateAdaptor(AppDelegate.self) var appDelegate
     init() {
         AppDelegate.shared = self.appDelegate
@@ -18,6 +22,17 @@ struct CalculatorApp: App {
     var body: some Scene {
         WindowGroup {
             ContentView()
+                .environmentObject(historyStore)
+                .onAppear {
+                    HistoryStore.load { result in
+                        switch result {
+                        case .failure(let error):
+                            fatalError(error.localizedDescription)
+                        case .success(let history):
+                            historyStore.history = history
+                        }
+                    }
+                }
         }
     }
 }

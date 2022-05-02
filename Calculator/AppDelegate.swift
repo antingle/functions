@@ -14,6 +14,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     var popover = NSPopover.init()
     var statusBarItem: NSStatusItem?
     static var shared : AppDelegate!
+    private var historyStore = HistoryStore() // Environment Object for History
     
     var window: NSWindow!
 
@@ -30,7 +31,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
                 window.center()
                 window.setFrameAutosaveName("Calculator")
                 window.isReleasedWhenClosed = false
-                window.contentView = NSHostingView(rootView: ContentView())
+                window.contentView = NSHostingView(rootView: ContentView().environmentObject(historyStore))
             }
             window.makeKeyAndOrderFront(nil)
         }
@@ -42,13 +43,11 @@ class AppDelegate: NSObject, NSApplicationDelegate {
             window.close()
         }
         
-        let contentView = ContentView()
-        
         // Set the SwiftUI's ContentView to the Popover's ContentViewController
         popover.behavior = .transient
         popover.animates = false
         popover.contentViewController = NSViewController()
-        popover.contentViewController?.view = NSHostingView(rootView: contentView)
+        popover.contentViewController?.view = NSHostingView(rootView: ContentView().environmentObject(historyStore))
         popover.contentViewController?.view.window?.makeKey()
         popover.contentSize = CGSize(width: 260, height: 400)
         
