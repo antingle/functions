@@ -2,8 +2,10 @@
 
 A calculator that lives in your menu bar and keeps a history of your calculations
 
-<img src="media/screenshot.png" alt="Calculator in the menu bar!" style="width: 300px">
-<img src="media/screenshot_window.png" alt="Calculator window" style="width: 300px">
+<p float="left">
+  <img src="media/screenshot.png" alt="Calculator in the menu bar!" style="width: 300px">
+  <img src="media/screenshot_window.png" alt="Calculator window" style="width: 300px">
+</p>
 
 ## Opening
 - The app is currently not signed, so simply double clicking the app will not open it
