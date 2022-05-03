@@ -13,6 +13,8 @@ struct SettingsView: View {
     
     var body: some View {
         VStack(alignment: .leading, spacing: 10) {
+            
+            // MARK: - Clear History
             Button {
                 withAnimation(.easeOut(duration: 0.1)) {
                     historyStore.history = []
@@ -30,6 +32,7 @@ struct SettingsView: View {
             .buttonStyle(.plain)
             .frame(maxWidth: .infinity)
             
+            // MARK: - Quit
             Button {
                 NSApplication.shared.terminate(nil)
             } label: {
@@ -42,6 +45,7 @@ struct SettingsView: View {
     }
 }
 
+// MARK: - Preview
 struct SettingsView_Previews: PreviewProvider {
     static var previews: some View {
         SettingsView()

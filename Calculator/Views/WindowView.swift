@@ -18,6 +18,7 @@ struct WindowView: View {
             CalculatorView()
                 .frame(maxWidth: 600)
             
+            // MARK: - Bottom Bar
             HStack {
                 Text("Menu Bar Calc")
                     .font(.headline)
@@ -41,6 +42,7 @@ struct WindowView: View {
         .padding([.horizontal, .bottom])
         .frame(minWidth: 250, minHeight: 265) // constrain min size of window
         .onAppear {
+            // Load history on from save on launch
             HistoryStore.load { result in
                 switch result {
                 case .failure(let error):
@@ -53,6 +55,7 @@ struct WindowView: View {
     }
 }
 
+// MARK: - Preview
 struct WindowView_Previews: PreviewProvider {
     static var previews: some View {
         WindowView()

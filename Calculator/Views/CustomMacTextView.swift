@@ -21,23 +21,23 @@ struct CustomMacTextView: NSViewRepresentable {
     
     var onMoveUp        : () -> Void       = {}
     var onMoveDown      : () -> Void       = {}
+    fileprivate let scrollView = PlaceholderNSTextView.scrollableTextView()
     
     func makeCoordinator() -> Coordinator {
         Coordinator(self)
     }
     
     func makeNSView(context: Context) -> NSScrollView {
-        let theTextView = PlaceholderNSTextView.scrollableTextView()
-        let textView = (theTextView.documentView as! PlaceholderNSTextView)
+        let textView = (scrollView.documentView as! PlaceholderNSTextView)
         textView.delegate = context.coordinator
         textView.string = text
         textView.drawsBackground = false
         textView.font = font
         textView.allowsUndo = true
         textView.placeholderText = placeholderText
-        theTextView.hasVerticalScroller = false
+        scrollView.hasVerticalScroller = false
         
-        return theTextView
+        return scrollView
     }
     
     func updateNSView(_ view: NSScrollView, context: Context) {
@@ -55,7 +55,6 @@ extension CustomMacTextView {
     class Coordinator: NSObject, NSTextViewDelegate {
         
         var parent: CustomMacTextView
-        var affectedCharRange: NSRange?
         
         init(_ parent: CustomMacTextView) {
             self.parent = parent
@@ -87,11 +86,6 @@ extension CustomMacTextView {
             
             self.parent.text = textView.string
             self.parent.onSubmit()
-        }
-        
-        
-        func textView(_ textView: NSTextView, shouldChangeTextIn affectedCharRange: NSRange, replacementString: String?) -> Bool {
-            return true
         }
         
         // handles commands

@@ -14,6 +14,8 @@ struct ButtonView: View {
     
     var body: some View {
         VStack {
+            
+            // MARK: - Row 1
             HStack {
                 Button("C") {
                     expression = ""
@@ -67,6 +69,7 @@ struct ButtonView: View {
                 }.calcButton()
             }
             
+            // MARK: - Row 2
             HStack {
                 Button("-") {
                     expression += "-"
@@ -116,6 +119,7 @@ struct ButtonView: View {
                 }.calcButton()
             }
             
+            // MARK: - Row 3
             HStack {
                 Button ("EE") {
                     expression += "E"
@@ -143,6 +147,7 @@ struct ButtonView: View {
                 }.calcButton()
             }
             
+            // MARK: - Row 4
             HStack {
                 Button ("sin(x)") {
                     expression += "sin("
@@ -160,6 +165,7 @@ struct ButtonView: View {
                 }.calcButton()
             }
             
+            // MARK: - Row 5
             HStack {
                 Button ("asin(x)") {
                     expression += "asin("
@@ -180,6 +186,7 @@ struct ButtonView: View {
         .frame(maxWidth: 600)
     }
     
+    // MARK: - Helper Functions
     private func addAnswer() {
         if (!historyStore.history.isEmpty)
         {
@@ -188,6 +195,7 @@ struct ButtonView: View {
     }
 }
 
+// MARK: - Preview
 struct Previews_ButtonView_Previews: PreviewProvider {
     static var previews: some View {
         ButtonView(expression: .constant(""), historyIndex: .constant(-1))

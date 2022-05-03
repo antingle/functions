@@ -17,6 +17,7 @@ struct ContentView: View {
             
             CalculatorView()
             
+            // MARK: - Bottom Bar
             HStack {
                 Text("Menu Bar Calc")
                     .font(.headline)
@@ -33,6 +34,8 @@ struct ContentView: View {
                 .popover(isPresented: $showingSettings, content: {
                     SettingsView().padding()
                 })
+                
+                // Open in separate window
                 Button {
                     NSApp.sendAction(#selector(AppDelegate.openCalculatorWindow), to: nil, from:nil)
                 } label: {
@@ -46,6 +49,7 @@ struct ContentView: View {
         .padding([.horizontal, .bottom])
         .frame(maxWidth: .infinity, maxHeight: .infinity)
         .onAppear {
+            // Load history on from save on launch
             HistoryStore.load { result in
                 switch result {
                 case .failure(let error):
@@ -59,6 +63,7 @@ struct ContentView: View {
     }
 }
 
+// MARK: - Preview
 struct ContentView_Previews: PreviewProvider {
     static var previews: some View {
         ContentView()
