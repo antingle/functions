@@ -34,7 +34,7 @@ A calculator that lives in your menu bar and keeps a history of your calculation
 **constants**
 
 ```swift
-pi
+pi or π, e
 ```
 
 **infix operators**
@@ -65,6 +65,8 @@ asin(x)
 tan(x)
 atan(x)
 abs(x)
+ln(x)
+log(x)
 
 // Binary functions
 
