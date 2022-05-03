@@ -26,8 +26,8 @@ A calculator that lives in your menu bar and keeps a history of your calculation
 
 ### Notes
 - Non-valid calculations cannot be submitted to history
-- Parentheses must be closed for valid calculations
 - Syntax must be valid (only numbers with supported operators, functions and constants)
+- Closing parentheses are added upon submission of an expression if open pairs are missing their closed counterparts
 
 ### Currently supported math symbols:
 
