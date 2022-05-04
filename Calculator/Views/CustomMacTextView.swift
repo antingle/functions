@@ -28,7 +28,10 @@ struct CustomMacTextView: NSViewRepresentable {
     }
     
     func makeNSView(context: Context) -> NSScrollView {
-        let textView = (scrollView.documentView as! PlaceholderNSTextView)
+        guard let textView = scrollView.documentView as? PlaceholderNSTextView else {
+            return scrollView
+        }
+        
         textView.delegate = context.coordinator
         textView.string = text
         textView.drawsBackground = false
@@ -109,7 +112,6 @@ extension CustomMacTextView {
             // return true if the action was handled; otherwise false
             return false
         }
-        
     }
 }
 

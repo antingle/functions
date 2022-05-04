@@ -15,8 +15,8 @@
 		928D96CA280AA5E400B6CE2E /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 928D96C9280AA5E400B6CE2E /* SettingsView.swift */; };
 		92AA9002281EEBEA008C9EC8 /* HistoryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92AA9001281EEBEA008C9EC8 /* HistoryView.swift */; };
 		92AA9004281F802C008C9EC8 /* History.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92AA9003281F802C008C9EC8 /* History.swift */; };
-		92B01F4A2809250B0069F3D7 /* HotKey in Frameworks */ = {isa = PBXBuildFile; productRef = 92B01F492809250B0069F3D7 /* HotKey */; };
 		92B01F4D280942500069F3D7 /* Expression in Frameworks */ = {isa = PBXBuildFile; productRef = 92B01F4C280942500069F3D7 /* Expression */; };
+		92E70FD82821C08E008FF2F5 /* HotKey in Frameworks */ = {isa = PBXBuildFile; productRef = 92E70FD72821C08E008FF2F5 /* HotKey */; };
 		92F4476C28089FEE00EC45D5 /* CalculatorApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92F4476B28089FEE00EC45D5 /* CalculatorApp.swift */; };
 		92F4476E28089FEE00EC45D5 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92F4476D28089FEE00EC45D5 /* ContentView.swift */; };
 		92F4477028089FF100EC45D5 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 92F4476F28089FF100EC45D5 /* Assets.xcassets */; };
@@ -50,7 +50,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				92B01F4A2809250B0069F3D7 /* HotKey in Frameworks */,
+				92E70FD82821C08E008FF2F5 /* HotKey in Frameworks */,
 				92B01F4D280942500069F3D7 /* Expression in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -146,8 +146,8 @@
 			);
 			name = Calculator;
 			packageProductDependencies = (
-				92B01F492809250B0069F3D7 /* HotKey */,
 				92B01F4C280942500069F3D7 /* Expression */,
+				92E70FD72821C08E008FF2F5 /* HotKey */,
 			);
 			productName = Calculator;
 			productReference = 92F4476828089FEE00EC45D5 /* Calculator.app */;
@@ -178,8 +178,8 @@
 			);
 			mainGroup = 92F4475F28089FEE00EC45D5;
 			packageReferences = (
-				92B01F482809250B0069F3D7 /* XCRemoteSwiftPackageReference "HotKey" */,
 				92B01F4B280942500069F3D7 /* XCRemoteSwiftPackageReference "Expression" */,
+				92E70FD62821C08E008FF2F5 /* XCRemoteSwiftPackageReference "HotKey" */,
 			);
 			productRefGroup = 92F4476928089FEE00EC45D5 /* Products */;
 			projectDirPath = "";
@@ -283,6 +283,7 @@
 				SDKROOT = macosx;
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 5.0;
 			};
 			name = Debug;
 		};
@@ -336,6 +337,7 @@
 				SDKROOT = macosx;
 				SWIFT_COMPILATION_MODE = wholemodule;
 				SWIFT_OPTIMIZATION_LEVEL = "-O";
+				SWIFT_VERSION = 5.0;
 			};
 			name = Release;
 		};
@@ -423,14 +425,6 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
-		92B01F482809250B0069F3D7 /* XCRemoteSwiftPackageReference "HotKey" */ = {
-			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "https://github.com/soffes/HotKey";
-			requirement = {
-				branch = master;
-				kind = branch;
-			};
-		};
 		92B01F4B280942500069F3D7 /* XCRemoteSwiftPackageReference "Expression" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/nicklockwood/Expression.git";
@@ -439,18 +433,26 @@
 				minimumVersion = 0.9.3;
 			};
 		};
+		92E70FD62821C08E008FF2F5 /* XCRemoteSwiftPackageReference "HotKey" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/soffes/HotKey";
+			requirement = {
+				branch = master;
+				kind = branch;
+			};
+		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
-		92B01F492809250B0069F3D7 /* HotKey */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = 92B01F482809250B0069F3D7 /* XCRemoteSwiftPackageReference "HotKey" */;
-			productName = HotKey;
-		};
 		92B01F4C280942500069F3D7 /* Expression */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = 92B01F4B280942500069F3D7 /* XCRemoteSwiftPackageReference "Expression" */;
 			productName = Expression;
+		};
+		92E70FD72821C08E008FF2F5 /* HotKey */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 92E70FD62821C08E008FF2F5 /* XCRemoteSwiftPackageReference "HotKey" */;
+			productName = HotKey;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};

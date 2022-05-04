@@ -21,6 +21,8 @@ func evaluateExpression(_ givenExpression: String) throws -> Double {
         
         .function("ln", arity: 1): { params in log(params[0]) },        // natural log
         .function("log", arity: 1): { params in log10(params[0]) },     // log base 10
+        .function("log10", arity: 1): { params in log10(params[0]) },   // ALT log base 10
+        .function("log2", arity: 1): { params in log2(params[0]) },     // log base 2
     ])
     
     solution = try expression.evaluate()
