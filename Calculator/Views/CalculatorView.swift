@@ -13,6 +13,7 @@ struct CalculatorView: View {
     @State private var solution: Double = 0.0           // solution after expression evalutation
     @State private var historyIndex: Int = -1           // keeps track of place in history when cycling
     @State private var expressionIsValid: Bool = false  // used to show live solution
+    @State private var shouldMoveCursorToEnd: Bool = true  // move cursor to end when adding to expression
     
     var body: some View {
         
@@ -23,11 +24,15 @@ struct CalculatorView: View {
             
             // MARK: - TextField View
             // An NSTextField wrapped as a SwiftUI view
-            CustomMacTextView(placeholderText: "Calculate", text: $expression,
+            CustomMacTextView(placeholderText: "Calculate", text: $expression, shouldMoveCursorToEnd: $shouldMoveCursorToEnd,
                               onSubmit: onExpressionSubmit, // on ENTER key press
+                              
                               // On every update of the textfield by keyboard
                               // reset history counter when keyboard used
-                              onTextChange: { _ in historyIndex = -1 },
+                              onTextChange: {
+                _ in historyIndex = -1
+                shouldMoveCursorToEnd = false
+            },
                               onMoveUp: onMoveCursorUp,  // on UP ARROW key
                               onMoveDown: onMoveCursorDown) // on DOWN ARROW key
             
@@ -44,6 +49,7 @@ struct CalculatorView: View {
                      newExpression == "^" ||
                      newExpression == "%")
                 {
+                    shouldMoveCursorToEnd = true
                     expression.insert(contentsOf: historyStore.history[0].solution, at: expression.startIndex)
                 }
                 
@@ -65,7 +71,7 @@ struct CalculatorView: View {
             
             // MARK: - Button View
             // A view for all the buttons at the bottom
-            ButtonView(expression: $expression, historyIndex: $historyIndex)
+            ButtonView(expression: $expression, historyIndex: $historyIndex, shouldMoveCursorToEnd: $shouldMoveCursorToEnd)
         }
     }
     
@@ -110,6 +116,7 @@ struct CalculatorView: View {
         // check that history array is not empty and history index does not go out of bounds
         if (!historyStore.history.isEmpty && historyIndex < historyStore.history.count - 1)
         {
+            shouldMoveCursorToEnd = true
             historyIndex += 1
             
             // if incrementing history, remove the number of characters of previous addition
@@ -123,6 +130,7 @@ struct CalculatorView: View {
     fileprivate func onMoveCursorDown() {
         if (!historyStore.history.isEmpty)
         {
+            shouldMoveCursorToEnd = true
             // check if UP ARROW has been pressed yet
             if historyIndex != -1 {
                 // if decrementing history, remove the number of characters of previous addition

@@ -13,6 +13,7 @@ struct CustomMacTextView: NSViewRepresentable {
     
     var placeholderText: String?
     @Binding var text: String
+    @Binding var shouldMoveCursorToEnd: Bool
     var font: NSFont = .systemFont(ofSize: 14, weight: .regular)
     
     var onSubmit        : () -> Void       = {}
@@ -21,13 +22,14 @@ struct CustomMacTextView: NSViewRepresentable {
     
     var onMoveUp        : () -> Void       = {}
     var onMoveDown      : () -> Void       = {}
-    fileprivate let scrollView = PlaceholderNSTextView.scrollableTextView()
     
     func makeCoordinator() -> Coordinator {
         Coordinator(self)
     }
     
     func makeNSView(context: Context) -> NSScrollView {
+        let scrollView = PlaceholderNSTextView.scrollableTextView()
+        
         guard let textView = scrollView.documentView as? PlaceholderNSTextView else {
             return scrollView
         }
@@ -38,6 +40,7 @@ struct CustomMacTextView: NSViewRepresentable {
         textView.font = font
         textView.allowsUndo = true
         textView.placeholderText = placeholderText
+        
         scrollView.hasVerticalScroller = false
         
         return scrollView
@@ -48,7 +51,15 @@ struct CustomMacTextView: NSViewRepresentable {
             return
         }
         
+        let currentRange = textView.selectedRange()
         textView.string = text
+        
+        // basically if we want to move the cursor to the end,
+        // we don't set the selected range to what is was before the string update
+        // otherwise, we set it
+        if !shouldMoveCursorToEnd {
+            textView.setSelectedRange(currentRange)
+        }
     }
     
 }
@@ -58,6 +69,7 @@ extension CustomMacTextView {
     class Coordinator: NSObject, NSTextViewDelegate {
         
         var parent: CustomMacTextView
+        var selectedRange: NSRange = NSRange()
         
         init(_ parent: CustomMacTextView) {
             self.parent = parent
@@ -77,9 +89,9 @@ extension CustomMacTextView {
                 return
             }
             
-            // Update text
-            self.parent.text = textView.string
             self.parent.onTextChange(textView.string)
+            self.parent.text = textView.string
+            selectedRange = textView.selectedRange()
         }
         
         func textDidEndEditing(_ notification: Notification) {
