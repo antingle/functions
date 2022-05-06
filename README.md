@@ -66,7 +66,8 @@ tan(x)
 atan(x)
 abs(x)
 ln(x)
-log(x)
+log(x) or log10(x)
+log2(x)
 
 // Binary functions
 
