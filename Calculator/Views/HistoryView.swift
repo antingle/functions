@@ -11,6 +11,7 @@ struct HistoryView: View {
     @EnvironmentObject private var historyStore: HistoryStore
     @Binding var expression: String
     @Binding var historyIndex: Int
+    @Binding var shouldMoveCursorToEnd: Bool
     
     var body: some View {
         // MARK TODO: Make this file more readable
@@ -30,6 +31,7 @@ struct HistoryView: View {
                                     .frame(maxWidth: .infinity, alignment: .trailing)
                                     .font(.title2)
                                     .onTapGesture {
+                                        shouldMoveCursorToEnd = true
                                         expression += item.solution
                                     }
                                     .foregroundColor(historyIndex != -1 ? (item.id == historyStore.history[historyIndex].id ? .accentColor : .primary) : .primary)
@@ -55,6 +57,7 @@ struct HistoryView: View {
                                 .font(.body)
                                 .foregroundColor(.gray)
                                 .onTapGesture {
+                                    shouldMoveCursorToEnd = true
                                     expression += item.expression
                                 }
                             // MARK TODO: Make this an option?

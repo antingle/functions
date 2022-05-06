@@ -23,7 +23,9 @@ struct CalculatorView: View {
         VStack {
             // MARK: - History View
             // A view to show all previous solutions and expressions
-            HistoryView(expression: $expression, historyIndex: $historyIndex)
+            HistoryView(expression: $expression,
+                        historyIndex: $historyIndex,
+                        shouldMoveCursorToEnd: $shouldMoveCursorToEnd)
             
             // MARK: - TextField View
             // An NSTextField wrapped as a SwiftUI view
