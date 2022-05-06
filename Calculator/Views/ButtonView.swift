@@ -25,38 +25,32 @@ struct ButtonView: View {
                              pressedColor: Color(nsColor: .tertiaryLabelColor))
                 
                 Button {
-                    shouldMoveCursorToEnd = true
-                    expression += "+"
-                    historyIndex = -1
+                    addToExpression("+")
                 } label: {
                     Image(systemName: "plus")
                 }.calcButton()
                 
                 Button() {
                     expression == "" ? addAnswer() : nil
-                    expression += "-"
-                    historyIndex = -1
+                    addToExpression("-")
                 } label: {
                     Image(systemName: "minus")
                 }.calcButton()
                 
                 Button() {
-                    shouldMoveCursorToEnd = true
-                    expression += "*"
-                    historyIndex = -1
+                    addToExpression("*")
                 } label: {
                     Image(systemName: "multiply")
                 }.calcButton()
                 
                 Button {
-                    shouldMoveCursorToEnd = true
-                    expression += "/"
-                    historyIndex = -1
+                    addToExpression("/")
                 } label: {
                     Image(systemName: "divide")
                 }.calcButton()
                 
                 Button {
+                    // MARK TODO: This is redundant code from CalculatorView onMoveUp()
                     // check that history array is not empty and history index does not go out of bounds
                     if (!historyStore.history.isEmpty && historyIndex < historyStore.history.count - 1)
                     {
@@ -77,39 +71,29 @@ struct ButtonView: View {
             // MARK: - Row 2
             HStack {
                 Button("-") {
-                    shouldMoveCursorToEnd = true
-                    expression += "-"
-                    historyIndex = -1
+                    addToExpression("-")
                 }.calcButton()
                 
                 Button {
-                    shouldMoveCursorToEnd = true
-                    expression += "sqrt("
-                    historyIndex = -1
+                    addToExpression("sqrt(")
                 } label: {
                     Image(systemName: "x.squareroot")
                 }.calcButton()
                 
                 Button ("^") {
-                    shouldMoveCursorToEnd = true
-                    expression += "^"
-                    historyIndex = -1
+                    addToExpression("^")
                 }.calcButton()
                 
                 Button ("(") {
-                    shouldMoveCursorToEnd = true
-                    expression += "("
-                    historyIndex = -1
+                    addToExpression("(")
                 }.calcButton()
                 
                 Button (")") {
-                    shouldMoveCursorToEnd = true
-                    expression += ")"
-                    historyIndex = -1
+                    addToExpression(")")
                 }.calcButton()
                 
                 Button {
-                    
+                    // MARK TODO: This is redundant code from CalculatorView onMoveDown()
                     if (!historyStore.history.isEmpty)
                     {
                         shouldMoveCursorToEnd = true
@@ -133,75 +117,53 @@ struct ButtonView: View {
             // MARK: - Row 3
             HStack {
                 Button ("EE") {
-                    shouldMoveCursorToEnd = true
-                    expression += "E"
-                    historyIndex = -1
+                    addToExpression("E")
                 }.calcButton()
                 
                 Button ("π") {
-                    shouldMoveCursorToEnd = true
-                    expression += "π"
-                    historyIndex = -1
+                    addToExpression("π")
                 }.calcButton()
                 
                 Button ("eˣ") {
-                    shouldMoveCursorToEnd = true
-                    expression += "e^"
-                    historyIndex = -1
+                    addToExpression("e^(")
                 }.calcButton()
                 
                 Button ("ln(x)") {
-                    shouldMoveCursorToEnd = true
-                    expression += "ln("
-                    historyIndex = -1
+                    addToExpression("ln(")
                 }.calcButton()
                 
                 Button ("log(x)") {
-                    shouldMoveCursorToEnd = true
-                    expression += "log("
-                    historyIndex = -1
+                    addToExpression("log(")
                 }.calcButton()
             }
             
             // MARK: - Row 4
             HStack {
                 Button ("sin(x)") {
-                    shouldMoveCursorToEnd = true
-                    expression += "sin("
-                    historyIndex = -1
+                    addToExpression("sin(")
                 }.calcButton()
                 
                 Button ("cos(x)") {
-                    shouldMoveCursorToEnd = true
-                    expression += "cos("
-                    historyIndex = -1
+                    addToExpression("cos(")
                 }.calcButton()
                 
                 Button ("tan(x)") {
-                    shouldMoveCursorToEnd = true
-                    expression += "tan("
-                    historyIndex = -1
+                    addToExpression("tan(")
                 }.calcButton()
             }
             
             // MARK: - Row 5
             HStack {
                 Button ("asin(x)") {
-                    shouldMoveCursorToEnd = true
-                    expression += "asin("
-                    historyIndex = -1
+                    addToExpression("asin(")
                 }.calcButton()
                 
                 Button ("acos(x)") {
-                    shouldMoveCursorToEnd = true
-                    expression += "acos("
-                    historyIndex = -1
+                    addToExpression("acos(")
                 }.calcButton()
                 
                 Button ("atan(x)") {
-                    shouldMoveCursorToEnd = true
-                    expression += "atan("
-                    historyIndex = -1
+                    addToExpression("atan(")
                 }.calcButton()
             }
         }
@@ -215,6 +177,12 @@ struct ButtonView: View {
             shouldMoveCursorToEnd = true
             expression += historyStore.history[0].solution
         }
+    }
+    
+    private func addToExpression(_ string: String) {
+        shouldMoveCursorToEnd = true
+        expression += string
+        historyIndex = -1
     }
 }
 

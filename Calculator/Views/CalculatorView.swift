@@ -24,29 +24,32 @@ struct CalculatorView: View {
             
             // MARK: - TextField View
             // An NSTextField wrapped as a SwiftUI view
-            CustomMacTextView(placeholderText: "Calculate", text: $expression, shouldMoveCursorToEnd: $shouldMoveCursorToEnd,
+            CustomMacTextView(placeholderText: "Calculate",
+                              text: $expression,
+                              shouldMoveCursorToEnd: $shouldMoveCursorToEnd,
                               onSubmit: onExpressionSubmit, // on ENTER key press
                               
                               // On every update of the textfield by keyboard
                               // reset history counter when keyboard used
                               onTextChange: {
-                _ in historyIndex = -1
-                shouldMoveCursorToEnd = false
-            },
+                                    _ in historyIndex = -1
+                                    shouldMoveCursorToEnd = false
+                                },
                               onMoveUp: onMoveCursorUp,  // on UP ARROW key
                               onMoveDown: onMoveCursorDown) // on DOWN ARROW key
             
-            .frame(height: 27) // MARK TODO: Make height-adjustable
+            .frame(height: 27) // MARK TODO: Make height-adjustable instead of scrollable
             
             // will always run on change of expression variable
             .onChange(of: expression, perform: { newExpression in
                 
-                // insert previous solution if these operators used first
+                // insert the previous solution if these operators are used on an empty expression
                 if !historyStore.history.isEmpty &&
                     (newExpression == "+" ||
                      newExpression == "*" ||
                      newExpression == "/" ||
                      newExpression == "^" ||
+                     newExpression == "E" ||
                      newExpression == "%")
                 {
                     shouldMoveCursorToEnd = true

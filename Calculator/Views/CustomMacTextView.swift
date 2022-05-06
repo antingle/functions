@@ -1,7 +1,7 @@
 //
 //  CustomMacTextView.swift
 //
-//  Foundation by Marc Maset - 2021
+//  MacEditorv2 Created by Marc Maset - 2021
 //  Changes inspired from MacEditorTextView by Thiago Holanda
 //
 //  Modified by Anthony Ingle - 2022
@@ -69,7 +69,6 @@ extension CustomMacTextView {
     class Coordinator: NSObject, NSTextViewDelegate {
         
         var parent: CustomMacTextView
-        var selectedRange: NSRange = NSRange()
         
         init(_ parent: CustomMacTextView) {
             self.parent = parent
@@ -91,7 +90,6 @@ extension CustomMacTextView {
             
             self.parent.onTextChange(textView.string)
             self.parent.text = textView.string
-            selectedRange = textView.selectedRange()
         }
         
         func textDidEndEditing(_ notification: Notification) {
