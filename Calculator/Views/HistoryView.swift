@@ -57,6 +57,9 @@ struct HistoryView: View {
                                 .onTapGesture {
                                     expression += item.expression
                                 }
+                            // MARK TODO: Make this an option?
+//                                .padding(.bottom, 2)
+//                                .overlay(Rectangle().frame(width: nil, height: 0.4, alignment: .bottom).foregroundColor(Color.gray), alignment: .bottom)
                             
                         }
                         .padding(.bottom, 4)

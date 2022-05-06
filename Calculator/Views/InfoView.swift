@@ -16,7 +16,7 @@ struct InfoView: View {
                         **Welcome to Menu Bar Calc!**
                         - Global shortcut ⌘⌥C
                         - Add previous solutions with arrow keys
-                        - Give Feedback [here](https://github.com/ingleanthony/menu-bar-calculator/discussionsr)
+                        - Feel free to give feedback [here](https://github.com/ingleanthony/menu-bar-calculator/discussionsr)
                         
                         **Constants**
                         π or pi

@@ -14,7 +14,9 @@ struct CalculatorView: View {
     @State private var solution: Double = 0.0                       // solution after expression evalutation
     @State private var historyIndex: Int = -1                       // keeps track of place in history when cycling
     @State private var expressionIsValid: Bool = false              // used to show live solution
+    @State private var invalidSubmission: Bool = false              // used to shake the textfield
     @State private var shouldMoveCursorToEnd: Bool = true           // move cursor to end when adding to expression
+    @State var attempts: Int = 0
     
     var body: some View {
         
@@ -66,6 +68,7 @@ struct CalculatorView: View {
                     solution = 0
                 }
             })
+            .modifier(Shake(animatableData: CGFloat(invalidSubmission ? 1 : 0)))
             
             // MARK: - Live Solution View
             Text(expressionIsValid ? solution.removeZerosFromEnd() : " ")
@@ -114,6 +117,12 @@ struct CalculatorView: View {
                 expression += "("
                 onExpressionSubmit()
             }
+            else {
+                withAnimation {
+                    invalidSubmission = true
+                }
+            }
+            invalidSubmission = false
             solution = 0
         }
     }

@@ -15,7 +15,6 @@ struct SettingsView: View {
     var body: some View {
         VStack(alignment: .leading, spacing: 10) {
             
-            
             // MARK: - Toggle Buttons
                 Toggle(isOn: $showingButtons, label: {
                     Text("Show Buttons").padding(.leading, 4)
