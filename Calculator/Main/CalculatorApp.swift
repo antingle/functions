@@ -6,14 +6,16 @@
 //
 
 import SwiftUI
+import KeyboardShortcuts
 
 @main
 struct CalculatorApp: App {
-    // MARK TODO: This Environment object is different than what is created in the AppDelegate
-    // however, the first window in WindowGroup is closed right away. Hacky solution...
+    // TODO: This Environment object is different than what is created in the AppDelegate
+    // but this object is never used because the window is closed right away in AppDelegate
     @StateObject private var historyStore = HistoryStore()
-    
+    @StateObject private var appState = AppState()
     @NSApplicationDelegateAdaptor(AppDelegate.self) var appDelegate
+    
     init() {
         AppDelegate.shared = self.appDelegate
     }
@@ -24,6 +26,19 @@ struct CalculatorApp: App {
             // as of right now, this window is removed on launch
             PopoverView()
                 .environmentObject(historyStore)
+        }
+    }
+}
+
+// Allows toggling of the global shortcut
+// NOTE: In the KeyboardShortcut docs, this class was @MainActor, but do we need it? (causes warnings)
+// @MainActor
+final class AppState: ObservableObject {
+    @NSApplicationDelegateAdaptor(AppDelegate.self) var appDelegate
+    
+    init() {
+        KeyboardShortcuts.onKeyDown(for: .togglePopover) { [self] in
+            appDelegate.togglePopover(AppDelegate.self)
         }
     }
 }

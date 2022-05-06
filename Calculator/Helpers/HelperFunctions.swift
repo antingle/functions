@@ -7,6 +7,7 @@
 
 import SwiftUI
 import Expression
+import KeyboardShortcuts
 
 func evaluateExpression(_ givenExpression: String) throws -> Double {
     var solution: Double = 0
@@ -39,4 +40,9 @@ extension Double {
         formatter.maximumFractionDigits = 16 // maximum digits in Double after dot (maximum precision)
         return String(formatter.string(from: number) ?? "")
     }
+}
+
+// global shortcut
+extension KeyboardShortcuts.Name {
+    static let togglePopover = Self("togglePopover")
 }

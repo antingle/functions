@@ -14,7 +14,7 @@ struct InfoView: View {
             
             Text("""
                         **Welcome to Menu Bar Calc!**
-                        - Global shortcut ⌘⌥C
+                        - Global shortcut is ⌘⌥C, but it is changeable
                         - Add previous solutions with arrow keys
                         - Feel free to give feedback [here](https://github.com/ingleanthony/menu-bar-calculator/discussionsr)
                         

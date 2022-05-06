@@ -98,7 +98,6 @@ extension CustomMacTextView {
             }
             
             self.parent.text = textView.string
-            self.parent.onSubmit()
         }
         
         // handles commands

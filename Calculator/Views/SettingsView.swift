@@ -7,6 +7,7 @@
 
 import SwiftUI
 import AudioToolbox
+import KeyboardShortcuts
 
 struct SettingsView: View {
     @EnvironmentObject private var historyStore: HistoryStore
@@ -14,6 +15,7 @@ struct SettingsView: View {
     
     var body: some View {
         VStack(alignment: .leading, spacing: 10) {
+            KeyboardShortcuts.Recorder(for: .togglePopover)
             
             // MARK: - Toggle Buttons
                 Toggle(isOn: $showingButtons, label: {
