@@ -21,7 +21,7 @@ struct CalculatorApp: App {
     
     var body: some Scene {
         WindowGroup {
-            ContentView()
+            PopoverView()
                 .environmentObject(historyStore)
         }
     }

@@ -8,7 +8,7 @@
 import SwiftUI
 import Expression
 
-struct ContentView: View {
+struct PopoverView: View {
     @State private var showingSettings = false
     @EnvironmentObject var historyStore: HistoryStore
     
@@ -66,7 +66,7 @@ struct ContentView: View {
 // MARK: - Preview
 struct ContentView_Previews: PreviewProvider {
     static var previews: some View {
-        ContentView()
+        PopoverView()
             .environmentObject(HistoryStore())
             .frame(width: 280, height: 460)
     }
