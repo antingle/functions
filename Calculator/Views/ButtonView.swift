@@ -21,7 +21,7 @@ struct ButtonView: View {
                 Button("C") {
                     expression = ""
                     historyIndex = -1
-                }.calcButton(backgroundColor: Color.accentColor,
+                }.calcButton(backgroundColor: .accentColor,
                              pressedColor: Color(nsColor: .tertiaryLabelColor))
                 
                 Button {
@@ -31,7 +31,7 @@ struct ButtonView: View {
                 }.calcButton()
                 
                 Button() {
-                    expression == "" ? addAnswer() : nil
+                    addAnswer()
                     addToExpression("-")
                 } label: {
                     Image(systemName: "minus")
@@ -117,6 +117,7 @@ struct ButtonView: View {
             // MARK: - Row 3
             HStack {
                 Button ("EE") {
+                    addAnswer()
                     addToExpression("E")
                 }.calcButton()
                 
@@ -172,7 +173,7 @@ struct ButtonView: View {
     
     // MARK: - Helper Functions
     private func addAnswer() {
-        if (!historyStore.history.isEmpty)
+        if (!historyStore.history.isEmpty && expression == "")
         {
             shouldMoveCursorToEnd = true
             expression += historyStore.history[0].solution
