@@ -8,6 +8,7 @@
 import SwiftUI
 import AudioToolbox
 import KeyboardShortcuts
+import LaunchAtLogin
 
 struct SettingsView: View {
     @EnvironmentObject private var historyStore: HistoryStore
@@ -15,9 +16,14 @@ struct SettingsView: View {
     
     var body: some View {
         VStack(alignment: .leading, spacing: 10) {
+            
+            // MARK: - Display and Change Global Shortcut
             KeyboardShortcuts.Recorder(for: .togglePopover)
             
-            // MARK: - Toggle Buttons
+            // MARK: - Toggle Launch at Login
+            LaunchAtLogin.Toggle()
+            
+            // MARK: - Toggle Button View
                 Toggle(isOn: $showingButtons, label: {
                     Text("Show Buttons").padding(.leading, 4)
                 })
