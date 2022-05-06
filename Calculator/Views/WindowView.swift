@@ -9,8 +9,9 @@ import SwiftUI
 import Expression
 
 struct WindowView: View {
+    @EnvironmentObject private var historyStore: HistoryStore
     @State private var showingSettings = false
-    @EnvironmentObject var historyStore: HistoryStore
+    @State private var showingInfo = false
     
     var body: some View {
         VStack {
@@ -24,6 +25,17 @@ struct WindowView: View {
                     .font(.headline)
                 
                 Spacer()
+                
+                // Info Button
+                Button {
+                    showingInfo.toggle()
+                } label: {
+                    Image(systemName: "info.circle")
+                }
+                .buttonStyle(.plain)
+                .popover(isPresented: $showingInfo, content: {
+                    InfoView().padding()
+                })
                 
                 // Settings Button
                 Button {

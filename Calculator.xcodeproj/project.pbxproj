@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		92204A3D2824B123003E1705 /* InfoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92204A3C2824B123003E1705 /* InfoView.swift */; };
 		923A7B67282053D7008BCD74 /* ViewExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 923A7B66282053D7008BCD74 /* ViewExtensions.swift */; };
 		923A7B6928206980008BCD74 /* WindowView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 923A7B6828206980008BCD74 /* WindowView.swift */; };
 		925E9140281D02AC0027E183 /* CustomMacTextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 925E913F281D02AC0027E183 /* CustomMacTextView.swift */; };
@@ -26,6 +27,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		92204A3C2824B123003E1705 /* InfoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InfoView.swift; sourceTree = "<group>"; };
 		923A7B66282053D7008BCD74 /* ViewExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewExtensions.swift; sourceTree = "<group>"; };
 		923A7B6828206980008BCD74 /* WindowView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WindowView.swift; sourceTree = "<group>"; };
 		925E913F281D02AC0027E183 /* CustomMacTextView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomMacTextView.swift; sourceTree = "<group>"; };
@@ -63,6 +65,7 @@
 			children = (
 				925E913F281D02AC0027E183 /* CustomMacTextView.swift */,
 				92F4476D28089FEE00EC45D5 /* PopoverView.swift */,
+				92204A3C2824B123003E1705 /* InfoView.swift */,
 				923A7B6828206980008BCD74 /* WindowView.swift */,
 				928D96C9280AA5E400B6CE2E /* SettingsView.swift */,
 				928D96C7280AA58D00B6CE2E /* CalculatorView.swift */,
@@ -212,6 +215,7 @@
 				928D96CA280AA5E400B6CE2E /* SettingsView.swift in Sources */,
 				928D96C8280AA58D00B6CE2E /* CalculatorView.swift in Sources */,
 				928D96C6280A8F9300B6CE2E /* ButtonView.swift in Sources */,
+				92204A3D2824B123003E1705 /* InfoView.swift in Sources */,
 				92AA9004281F802C008C9EC8 /* History.swift in Sources */,
 				925E9140281D02AC0027E183 /* CustomMacTextView.swift in Sources */,
 				92F4476E28089FEE00EC45D5 /* PopoverView.swift in Sources */,

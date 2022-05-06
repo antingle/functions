@@ -10,13 +10,12 @@ import HotKey
 
 // Using AppDelegate because it is needed for NSPopover
 class AppDelegate: NSObject, NSApplicationDelegate {
-    let hotKey = HotKey(key: .c, modifiers: [.command, .option]) // global open shortcut
-    var popover = NSPopover.init()
-    var statusBarItem: NSStatusItem?
     static var shared : AppDelegate!
+    private var popover = NSPopover.init()
+    private var statusBarItem: NSStatusItem?
+    private var window: NSWindow!
+    private let hotKey = HotKey(key: .c, modifiers: [.command, .option]) // global open shortcut
     private var historyStore = HistoryStore() // Environment Object for History
-    
-    var window: NSWindow!
     
     @objc func openCalculatorWindow() {
         
@@ -45,6 +44,9 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     
     func applicationDidFinishLaunching(_ notification: Notification) {
         
+        let contentView = PopoverView()
+            .environmentObject(historyStore)
+        
         // close window on launch
         if let window = NSApplication.shared.windows.first {
             window.close()
@@ -54,7 +56,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         popover.behavior = .transient
         popover.animates = true
         popover.contentViewController = NSViewController()
-        popover.contentViewController?.view = NSHostingView(rootView: PopoverView().environmentObject(historyStore))
+        popover.contentViewController?.view = NSHostingView(rootView: contentView)
         popover.contentViewController?.view.window?.makeKey()
         popover.contentSize = CGSize(width: 280, height: 460)
         

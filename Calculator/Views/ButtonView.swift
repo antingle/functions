@@ -8,10 +8,10 @@
 import SwiftUI
 
 struct ButtonView: View {
+    @EnvironmentObject private var historyStore: HistoryStore
     @Binding var expression: String
     @Binding var historyIndex: Int
     @Binding var shouldMoveCursorToEnd: Bool
-    @EnvironmentObject var historyStore: HistoryStore
     
     var body: some View {
         VStack {
@@ -81,7 +81,7 @@ struct ButtonView: View {
                 }.calcButton()
                 
                 Button ("^") {
-                    addToExpression("^")
+                    addToExpression("^(")
                 }.calcButton()
                 
                 Button ("(") {

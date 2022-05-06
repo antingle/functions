@@ -8,12 +8,13 @@
 import SwiftUI
 
 struct CalculatorView: View {
-    @EnvironmentObject var historyStore: HistoryStore   // history of previous calculations
-    @State private var expression: String = ""          // expression being typed
-    @State private var solution: Double = 0.0           // solution after expression evalutation
-    @State private var historyIndex: Int = -1           // keeps track of place in history when cycling
-    @State private var expressionIsValid: Bool = false  // used to show live solution
-    @State private var shouldMoveCursorToEnd: Bool = true  // move cursor to end when adding to expression
+    @EnvironmentObject var historyStore: HistoryStore               // history of previous calculations
+    @AppStorage("showingButtons") private var showingButtons = true // show ButtonView
+    @State private var expression: String = ""                      // expression being typed
+    @State private var solution: Double = 0.0                       // solution after expression evalutation
+    @State private var historyIndex: Int = -1                       // keeps track of place in history when cycling
+    @State private var expressionIsValid: Bool = false              // used to show live solution
+    @State private var shouldMoveCursorToEnd: Bool = true           // move cursor to end when adding to expression
     
     var body: some View {
         
@@ -32,9 +33,9 @@ struct CalculatorView: View {
                               // On every update of the textfield by keyboard
                               // reset history counter when keyboard used
                               onTextChange: {
-                                    _ in historyIndex = -1
-                                    shouldMoveCursorToEnd = false
-                                },
+                _ in historyIndex = -1
+                shouldMoveCursorToEnd = false
+            },
                               onMoveUp: onMoveCursorUp,  // on UP ARROW key
                               onMoveDown: onMoveCursorDown) // on DOWN ARROW key
             
@@ -49,7 +50,7 @@ struct CalculatorView: View {
                      newExpression == "*" ||
                      newExpression == "/" ||
                      newExpression == "^" ||
-                     newExpression == "E" ||
+                     newExpression == "^(" ||
                      newExpression == "%")
                 {
                     shouldMoveCursorToEnd = true
@@ -74,7 +75,9 @@ struct CalculatorView: View {
             
             // MARK: - Button View
             // A view for all the buttons at the bottom
-            ButtonView(expression: $expression, historyIndex: $historyIndex, shouldMoveCursorToEnd: $shouldMoveCursorToEnd)
+            if showingButtons {
+                ButtonView(expression: $expression, historyIndex: $historyIndex, shouldMoveCursorToEnd: $shouldMoveCursorToEnd)
+            }
         }
     }
     

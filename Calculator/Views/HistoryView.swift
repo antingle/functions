@@ -8,9 +8,9 @@
 import SwiftUI
 
 struct HistoryView: View {
+    @EnvironmentObject private var historyStore: HistoryStore
     @Binding var expression: String
     @Binding var historyIndex: Int
-    @EnvironmentObject var historyStore: HistoryStore
     
     var body: some View {
         // MARK TODO: Make this file more readable

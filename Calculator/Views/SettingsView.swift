@@ -9,10 +9,17 @@ import SwiftUI
 import AudioToolbox
 
 struct SettingsView: View {
-    @EnvironmentObject var historyStore: HistoryStore
+    @EnvironmentObject private var historyStore: HistoryStore
+    @AppStorage("showingButtons") private var showingButtons = true
     
     var body: some View {
         VStack(alignment: .leading, spacing: 10) {
+            
+            
+            // MARK: - Toggle Buttons
+                Toggle(isOn: $showingButtons, label: {
+                    Text("Show Buttons").padding(.leading, 4)
+                })
             
             // MARK: - Clear History
             Button {
@@ -30,7 +37,6 @@ struct SettingsView: View {
                 Text("Clear History")
             }
             .buttonStyle(.plain)
-            .frame(maxWidth: .infinity)
             
             // MARK: - Quit
             Button {

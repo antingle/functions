@@ -21,6 +21,7 @@ struct CalculatorApp: App {
     
     var body: some Scene {
         WindowGroup {
+            // as of right now, this window is removed on launch
             PopoverView()
                 .environmentObject(historyStore)
         }
