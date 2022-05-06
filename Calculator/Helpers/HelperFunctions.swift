@@ -44,5 +44,6 @@ extension Double {
 
 // global shortcut
 extension KeyboardShortcuts.Name {
-    static let togglePopover = Self("togglePopover")
+    // TODO: maybe not set default? Show welcome screen with option to set it?
+    static let togglePopover = Self("togglePopover", default: .init(.c, modifiers: [.command, .option]))
 }
