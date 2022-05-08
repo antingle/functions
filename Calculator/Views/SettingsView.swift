@@ -13,9 +13,17 @@ import LaunchAtLogin
 struct SettingsView: View {
     @EnvironmentObject private var historyStore: HistoryStore
     @AppStorage("showingButtons") private var showingButtons = true
+    @AppStorage("trigMode") private var trigMode: Mode = .degree
     
     var body: some View {
         VStack(alignment: .leading, spacing: 10) {
+            
+            // MARK: - Calculator Mode
+            Picker(selection: $trigMode, content: {
+                Text("Degree").tag(Mode.degree)
+                Text("Radian").tag(Mode.radian)
+            }, label: {})
+            .pickerStyle(.segmented)
             
             // MARK: - Display and Change Global Shortcut
             KeyboardShortcuts.Recorder(for: .togglePopover)
@@ -56,6 +64,12 @@ struct SettingsView: View {
             .foregroundColor(.red)
         }
     }
+}
+
+// For picking the calculator trig mode
+enum Mode: String, CaseIterable, Identifiable  {
+    case radian, degree
+    var id: Self { self }
 }
 
 // MARK: - Preview

@@ -18,6 +18,7 @@
 		92AA9002281EEBEA008C9EC8 /* HistoryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92AA9001281EEBEA008C9EC8 /* HistoryView.swift */; };
 		92AA9004281F802C008C9EC8 /* History.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92AA9003281F802C008C9EC8 /* History.swift */; };
 		92B01F4D280942500069F3D7 /* Expression in Frameworks */ = {isa = PBXBuildFile; productRef = 92B01F4C280942500069F3D7 /* Expression */; };
+		92D80D72282829440088A2A2 /* README.md in Resources */ = {isa = PBXBuildFile; fileRef = 92D80D71282829440088A2A2 /* README.md */; };
 		92EEDD392825998A005F0CD8 /* LaunchAtLogin in Frameworks */ = {isa = PBXBuildFile; productRef = 92EEDD382825998A005F0CD8 /* LaunchAtLogin */; };
 		92F4476C28089FEE00EC45D5 /* CalculatorApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92F4476B28089FEE00EC45D5 /* CalculatorApp.swift */; };
 		92F4476E28089FEE00EC45D5 /* PopoverView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92F4476D28089FEE00EC45D5 /* PopoverView.swift */; };
@@ -37,6 +38,7 @@
 		928D96C9280AA5E400B6CE2E /* SettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
 		92AA9001281EEBEA008C9EC8 /* HistoryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HistoryView.swift; sourceTree = "<group>"; };
 		92AA9003281F802C008C9EC8 /* History.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = History.swift; sourceTree = "<group>"; };
+		92D80D71282829440088A2A2 /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = SOURCE_ROOT; };
 		92F4476828089FEE00EC45D5 /* Calculator.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Calculator.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		92F4476B28089FEE00EC45D5 /* CalculatorApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalculatorApp.swift; sourceTree = "<group>"; };
 		92F4476D28089FEE00EC45D5 /* PopoverView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PopoverView.swift; sourceTree = "<group>"; };
@@ -62,17 +64,33 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		923A7B63282046C3008BCD74 /* Views */ = {
+		922E086A282852F900CCCA85 /* Calculator */ = {
 			isa = PBXGroup;
 			children = (
 				925E913F281D02AC0027E183 /* CustomMacTextView.swift */,
-				92F4476D28089FEE00EC45D5 /* PopoverView.swift */,
-				92204A3C2824B123003E1705 /* InfoView.swift */,
-				923A7B6828206980008BCD74 /* WindowView.swift */,
-				928D96C9280AA5E400B6CE2E /* SettingsView.swift */,
 				928D96C7280AA58D00B6CE2E /* CalculatorView.swift */,
 				92AA9001281EEBEA008C9EC8 /* HistoryView.swift */,
 				928D96C5280A8F9300B6CE2E /* ButtonView.swift */,
+			);
+			path = Calculator;
+			sourceTree = "<group>";
+		};
+		922E086B2828532800CCCA85 /* Container */ = {
+			isa = PBXGroup;
+			children = (
+				92F4476D28089FEE00EC45D5 /* PopoverView.swift */,
+				923A7B6828206980008BCD74 /* WindowView.swift */,
+			);
+			path = Container;
+			sourceTree = "<group>";
+		};
+		923A7B63282046C3008BCD74 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				922E086B2828532800CCCA85 /* Container */,
+				922E086A282852F900CCCA85 /* Calculator */,
+				92204A3C2824B123003E1705 /* InfoView.swift */,
+				928D96C9280AA5E400B6CE2E /* SettingsView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -99,6 +117,7 @@
 		92F4475F28089FEE00EC45D5 = {
 			isa = PBXGroup;
 			children = (
+				92D80D71282829440088A2A2 /* README.md */,
 				92F4476A28089FEE00EC45D5 /* Calculator */,
 				92F4476928089FEE00EC45D5 /* Products */,
 			);
@@ -203,6 +222,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				92D80D72282829440088A2A2 /* README.md in Resources */,
 				92F4477328089FF100EC45D5 /* Preview Assets.xcassets in Resources */,
 				92F4477028089FF100EC45D5 /* Assets.xcassets in Resources */,
 			);

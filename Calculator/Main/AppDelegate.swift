@@ -16,11 +16,10 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     private var historyStore = HistoryStore() // Environment Object for History
     
     @objc func openCalculatorWindow() {
-        
-        let contentView = WindowView()
-            .environmentObject(historyStore)
-        
         if nil == window {      // create once !!
+            let contentView = WindowView()
+                .environmentObject(historyStore)
+            
             window = NSWindow(
                 contentRect: NSRect(x: 0, y: 0, width: 280, height: 460),
                 styleMask: [.titled, .closable, .miniaturizable, .resizable, .fullSizeContentView],
@@ -42,13 +41,13 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     
     func applicationDidFinishLaunching(_ notification: Notification) {
         
-        let contentView = PopoverView()
-            .environmentObject(historyStore)
-        
         // close window on launch
         if let window = NSApplication.shared.windows.first {
             window.close()
         }
+        
+        let contentView = PopoverView()
+            .environmentObject(historyStore)
         
         // Set the SwiftUI's ContentView to the Popover's ContentViewController
         popover.behavior = .transient

@@ -63,9 +63,16 @@ struct CalculatorView: View {
                 
                 do {
                     solution = try evaluateExpression(newExpression)
+                    
+                    guard !solution.isNaN else { throw NumberError.invalid}
+                    
                     expressionIsValid = true
                 }
                 catch {
+                    // print invalid expressions to console 
+#if DEBUG
+                    print(error)
+#endif
                     expressionIsValid = false
                     solution = 0
                 }
@@ -91,6 +98,8 @@ struct CalculatorView: View {
         do {
             historyIndex = -1
             solution = try evaluateExpression(expression)
+            
+            guard !solution.isNaN else { throw NumberError.invalid}
             
             // insert item into history
             withAnimation(.spring()) {
