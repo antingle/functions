@@ -1,6 +1,6 @@
-# Menu Bar Calculator for macOS
+# Functions
 
-A calculator that lives in your menu bar and keeps a history of your calculations
+A calculator that lives in your macOS menu bar and keeps a history of your calculations
 
 <div align="left">
   	<img width="300" src="media/menubar_dark.png#gh-dark-mode-only" alt="Calculator in the menu bar">

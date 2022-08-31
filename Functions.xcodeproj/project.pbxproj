@@ -24,6 +24,11 @@
 		92B0EC17285CF1C000825E73 /* ButtonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92B0EC13285CF1C000825E73 /* ButtonView.swift */; };
 		92B0EC1C285CF1D000825E73 /* ViewExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92B0EC19285CF1D000825E73 /* ViewExtensions.swift */; };
 		92B0EC1D285CF1D000825E73 /* HelperFunctions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92B0EC1A285CF1D000825E73 /* HelperFunctions.swift */; };
+		92DF7E8328BEF3F100BD7757 /* window_dark.png in Resources */ = {isa = PBXBuildFile; fileRef = 92DF7E7E28BEF3F100BD7757 /* window_dark.png */; };
+		92DF7E8428BEF3F100BD7757 /* menubar_light.png in Resources */ = {isa = PBXBuildFile; fileRef = 92DF7E7F28BEF3F100BD7757 /* menubar_light.png */; };
+		92DF7E8528BEF3F100BD7757 /* menubar_dark.png in Resources */ = {isa = PBXBuildFile; fileRef = 92DF7E8028BEF3F100BD7757 /* menubar_dark.png */; };
+		92DF7E8628BEF3F100BD7757 /* window_light.png in Resources */ = {isa = PBXBuildFile; fileRef = 92DF7E8128BEF3F100BD7757 /* window_light.png */; };
+		92DF7E8728BEF3F100BD7757 /* README.md in Resources */ = {isa = PBXBuildFile; fileRef = 92DF7E8228BEF3F100BD7757 /* README.md */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -44,6 +49,11 @@
 		92B0EC13285CF1C000825E73 /* ButtonView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ButtonView.swift; sourceTree = "<group>"; };
 		92B0EC19285CF1D000825E73 /* ViewExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewExtensions.swift; sourceTree = "<group>"; };
 		92B0EC1A285CF1D000825E73 /* HelperFunctions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HelperFunctions.swift; sourceTree = "<group>"; };
+		92DF7E7E28BEF3F100BD7757 /* window_dark.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = window_dark.png; sourceTree = "<group>"; };
+		92DF7E7F28BEF3F100BD7757 /* menubar_light.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = menubar_light.png; sourceTree = "<group>"; };
+		92DF7E8028BEF3F100BD7757 /* menubar_dark.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = menubar_dark.png; sourceTree = "<group>"; };
+		92DF7E8128BEF3F100BD7757 /* window_light.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = window_light.png; sourceTree = "<group>"; };
+		92DF7E8228BEF3F100BD7757 /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -74,6 +84,8 @@
 		924B6147285CE32E00099353 = {
 			isa = PBXGroup;
 			children = (
+				92DF7E7D28BEF3F100BD7757 /* media */,
+				92DF7E8228BEF3F100BD7757 /* README.md */,
 				924B6152285CE32E00099353 /* Functions */,
 				924B6151285CE32E00099353 /* Products */,
 			);
@@ -129,6 +141,17 @@
 				92B0EC1A285CF1D000825E73 /* HelperFunctions.swift */,
 			);
 			path = Helpers;
+			sourceTree = "<group>";
+		};
+		92DF7E7D28BEF3F100BD7757 /* media */ = {
+			isa = PBXGroup;
+			children = (
+				92DF7E7E28BEF3F100BD7757 /* window_dark.png */,
+				92DF7E7F28BEF3F100BD7757 /* menubar_light.png */,
+				92DF7E8028BEF3F100BD7757 /* menubar_dark.png */,
+				92DF7E8128BEF3F100BD7757 /* window_light.png */,
+			);
+			path = media;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -200,7 +223,12 @@
 			buildActionMask = 2147483647;
 			files = (
 				924B615B285CE32F00099353 /* Preview Assets.xcassets in Resources */,
+				92DF7E8528BEF3F100BD7757 /* menubar_dark.png in Resources */,
+				92DF7E8428BEF3F100BD7757 /* menubar_light.png in Resources */,
+				92DF7E8728BEF3F100BD7757 /* README.md in Resources */,
 				924B6158285CE32F00099353 /* Assets.xcassets in Resources */,
+				92DF7E8628BEF3F100BD7757 /* window_light.png in Resources */,
+				92DF7E8328BEF3F100BD7757 /* window_dark.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
