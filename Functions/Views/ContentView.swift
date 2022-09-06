@@ -16,6 +16,7 @@ struct ContentView: View {
     private var history: FetchedResults<History>
     @State private var showingSettings = false
     @State private var showingInfo = false
+    
     var isWindow = false
     @Environment(\.openURL) private var openURL
 
@@ -26,10 +27,10 @@ struct ContentView: View {
             // MARK: - Bottom Bar
             HStack {
                 Image(systemName: "function")
-                    .foregroundColor(.gray)
+                    .foregroundColor(.accentColor)
                 Text("Functions")
                     .font(.headline)
-                    .foregroundColor(.gray)
+                    .foregroundColor(.accentColor)
                 
                 Spacer()
                 

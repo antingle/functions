@@ -14,6 +14,7 @@ struct SettingsView: View {
     @Environment(\.managedObjectContext) private var viewContext
     @AppStorage("showingButtons") private var showingButtons = true
     @AppStorage("trigMode") private var trigMode: Mode = .degree
+    @AppStorage("accentColor") private var accentColor = "indigo"
     
     var body: some View {
         VStack(alignment: .leading, spacing: 10) {
@@ -26,7 +27,16 @@ struct SettingsView: View {
             .pickerStyle(.segmented)
             
             // MARK: - Display and Change Global Shortcut
-            KeyboardShortcuts.Recorder(for: .togglePopover)
+//            KeyboardShortcuts.Recorder(for: .toggleMenu)
+            
+            // MARK: - Accent Color Picker
+            Picker("Accent Color:", selection: $accentColor) {
+                ForEach(namedColors, id: \.self) { colorName in
+                    HStack {
+                        Image(nsImage: myColorSwatches[colorName]!)
+                    }
+                }
+            }
             
             // MARK: - Toggle Launch at Login
             LaunchAtLogin.Toggle()
@@ -34,7 +44,7 @@ struct SettingsView: View {
             // MARK: - Toggle Button View
             Toggle(isOn: $showingButtons, label: {
                 Text("Show Buttons").padding(.leading, 4)
-            })
+            }).accentColor(Color(accentColor))
             
             // MARK: - Clear History
             Button {
@@ -68,6 +78,7 @@ struct SettingsView: View {
             for object in results {
                 guard let objectData = object as? NSManagedObject else {continue}
                 viewContext.delete(objectData)
+                try viewContext.save()
             }
         } catch let error {
             print("Delete all data in \(entity) error :", error)
@@ -87,3 +98,30 @@ struct SettingsView_Previews: PreviewProvider {
         SettingsView()
     }
 }
+
+let namedColors:[String] = [
+    "indigo",
+    "blue",
+    "teal",
+    "green",
+    "yellow",
+    "orange",
+    "red",
+    "purple",
+    "gray"
+]
+
+let myColorSwatches:[String:NSImage] = { (colorNames:[String]) -> [String:NSImage] in
+    var toReturn:[String:NSImage] = [:]
+    for colorName in colorNames {
+        let image = NSImage(systemSymbolName: "rectangle.fill", accessibilityDescription: nil)!
+        image.isTemplate = false
+        image.lockFocus()
+        NSColor(named: colorName)!.set()
+        let imageRect = NSRect(origin: .zero, size: image.size)
+        imageRect.fill(using: .sourceIn)
+        image.unlockFocus()
+        toReturn[colorName] = image
+    }
+    return toReturn
+}(namedColors)

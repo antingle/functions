@@ -88,7 +88,7 @@ extension Double {
 // global shortcut
 extension KeyboardShortcuts.Name {
     // TODO: maybe not set default? Show welcome screen with option to set it?
-    static let togglePopover = Self("togglePopover", default: .init(.c, modifiers: [.command, .option]))
+    static let toggleMenu = Self("toggleMenu", default: .init(.c, modifiers: [.command, .option]))
 }
 
 // This error is used when an expression evaluates to NaN TODO: (could be better)

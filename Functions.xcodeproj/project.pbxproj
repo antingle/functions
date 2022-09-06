@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		920A1BB728C6A4FE00AAD0C8 /* HistoryItemView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 920A1BB628C6A4FE00AAD0C8 /* HistoryItemView.swift */; };
+		920A1BBA28C6BF5100AAD0C8 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 920A1BB928C6BF5100AAD0C8 /* AppDelegate.swift */; };
 		92220C5A285FF36400F0EED5 /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92220C55285FF36400F0EED5 /* SettingsView.swift */; };
 		92220C5D285FF36400F0EED5 /* InfoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92220C59285FF36400F0EED5 /* InfoView.swift */; };
 		92220C61285FF3BA00F0EED5 /* LaunchAtLogin in Frameworks */ = {isa = PBXBuildFile; productRef = 92220C60285FF3BA00F0EED5 /* LaunchAtLogin */; };
@@ -24,14 +26,12 @@
 		92B0EC17285CF1C000825E73 /* ButtonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92B0EC13285CF1C000825E73 /* ButtonView.swift */; };
 		92B0EC1C285CF1D000825E73 /* ViewExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92B0EC19285CF1D000825E73 /* ViewExtensions.swift */; };
 		92B0EC1D285CF1D000825E73 /* HelperFunctions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92B0EC1A285CF1D000825E73 /* HelperFunctions.swift */; };
-		92DF7E8328BEF3F100BD7757 /* window_dark.png in Resources */ = {isa = PBXBuildFile; fileRef = 92DF7E7E28BEF3F100BD7757 /* window_dark.png */; };
-		92DF7E8428BEF3F100BD7757 /* menubar_light.png in Resources */ = {isa = PBXBuildFile; fileRef = 92DF7E7F28BEF3F100BD7757 /* menubar_light.png */; };
-		92DF7E8528BEF3F100BD7757 /* menubar_dark.png in Resources */ = {isa = PBXBuildFile; fileRef = 92DF7E8028BEF3F100BD7757 /* menubar_dark.png */; };
-		92DF7E8628BEF3F100BD7757 /* window_light.png in Resources */ = {isa = PBXBuildFile; fileRef = 92DF7E8128BEF3F100BD7757 /* window_light.png */; };
 		92DF7E8728BEF3F100BD7757 /* README.md in Resources */ = {isa = PBXBuildFile; fileRef = 92DF7E8228BEF3F100BD7757 /* README.md */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		920A1BB628C6A4FE00AAD0C8 /* HistoryItemView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HistoryItemView.swift; sourceTree = "<group>"; };
+		920A1BB928C6BF5100AAD0C8 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		92220C55285FF36400F0EED5 /* SettingsView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
 		92220C59285FF36400F0EED5 /* InfoView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InfoView.swift; sourceTree = "<group>"; };
 		9239E82F28BC4B0A00D8F8E6 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
@@ -49,10 +49,6 @@
 		92B0EC13285CF1C000825E73 /* ButtonView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ButtonView.swift; sourceTree = "<group>"; };
 		92B0EC19285CF1D000825E73 /* ViewExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewExtensions.swift; sourceTree = "<group>"; };
 		92B0EC1A285CF1D000825E73 /* HelperFunctions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HelperFunctions.swift; sourceTree = "<group>"; };
-		92DF7E7E28BEF3F100BD7757 /* window_dark.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = window_dark.png; sourceTree = "<group>"; };
-		92DF7E7F28BEF3F100BD7757 /* menubar_light.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = menubar_light.png; sourceTree = "<group>"; };
-		92DF7E8028BEF3F100BD7757 /* menubar_dark.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = menubar_dark.png; sourceTree = "<group>"; };
-		92DF7E8128BEF3F100BD7757 /* window_light.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = window_light.png; sourceTree = "<group>"; };
 		92DF7E8228BEF3F100BD7757 /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -77,6 +73,7 @@
 				92B0EC0F285CF1C000825E73 /* Calculator */,
 				92220C59285FF36400F0EED5 /* InfoView.swift */,
 				92220C55285FF36400F0EED5 /* SettingsView.swift */,
+				920A1BB928C6BF5100AAD0C8 /* AppDelegate.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -84,7 +81,6 @@
 		924B6147285CE32E00099353 = {
 			isa = PBXGroup;
 			children = (
-				92DF7E7D28BEF3F100BD7757 /* media */,
 				92DF7E8228BEF3F100BD7757 /* README.md */,
 				924B6152285CE32E00099353 /* Functions */,
 				924B6151285CE32E00099353 /* Products */,
@@ -129,6 +125,7 @@
 				92B0EC10285CF1C000825E73 /* CustomMacTextView.swift */,
 				92B0EC11285CF1C000825E73 /* CalculatorView.swift */,
 				92B0EC12285CF1C000825E73 /* HistoryView.swift */,
+				920A1BB628C6A4FE00AAD0C8 /* HistoryItemView.swift */,
 				92B0EC13285CF1C000825E73 /* ButtonView.swift */,
 			);
 			path = Calculator;
@@ -143,17 +140,6 @@
 			path = Helpers;
 			sourceTree = "<group>";
 		};
-		92DF7E7D28BEF3F100BD7757 /* media */ = {
-			isa = PBXGroup;
-			children = (
-				92DF7E7E28BEF3F100BD7757 /* window_dark.png */,
-				92DF7E7F28BEF3F100BD7757 /* menubar_light.png */,
-				92DF7E8028BEF3F100BD7757 /* menubar_dark.png */,
-				92DF7E8128BEF3F100BD7757 /* window_light.png */,
-			);
-			path = media;
-			sourceTree = "<group>";
-		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -164,6 +150,7 @@
 				924B614C285CE32E00099353 /* Sources */,
 				924B614D285CE32E00099353 /* Frameworks */,
 				924B614E285CE32E00099353 /* Resources */,
+				920A1BB828C6BE5E00AAD0C8 /* Copy “Launch at Login Helper” */,
 			);
 			buildRules = (
 			);
@@ -223,25 +210,44 @@
 			buildActionMask = 2147483647;
 			files = (
 				924B615B285CE32F00099353 /* Preview Assets.xcassets in Resources */,
-				92DF7E8528BEF3F100BD7757 /* menubar_dark.png in Resources */,
-				92DF7E8428BEF3F100BD7757 /* menubar_light.png in Resources */,
 				92DF7E8728BEF3F100BD7757 /* README.md in Resources */,
 				924B6158285CE32F00099353 /* Assets.xcassets in Resources */,
-				92DF7E8628BEF3F100BD7757 /* window_light.png in Resources */,
-				92DF7E8328BEF3F100BD7757 /* window_dark.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		920A1BB828C6BE5E00AAD0C8 /* Copy “Launch at Login Helper” */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+			);
+			name = "Copy “Launch at Login Helper”";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${BUILT_PRODUCTS_DIR}/LaunchAtLogin_LaunchAtLogin.bundle/Contents/Resources/copy-helper-swiftpm.sh\"\n";
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		924B614C285CE32E00099353 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				920A1BB728C6A4FE00AAD0C8 /* HistoryItemView.swift in Sources */,
 				92B0EC16285CF1C000825E73 /* HistoryView.swift in Sources */,
 				924B615D285CE32F00099353 /* Persistence.swift in Sources */,
 				92B0EC17285CF1C000825E73 /* ButtonView.swift in Sources */,
+				920A1BBA28C6BF5100AAD0C8 /* AppDelegate.swift in Sources */,
 				924B6156285CE32E00099353 /* ContentView.swift in Sources */,
 				92B0EC1C285CF1D000825E73 /* ViewExtensions.swift in Sources */,
 				92B0EC1D285CF1D000825E73 /* HelperFunctions.swift in Sources */,
@@ -376,6 +382,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_ENTITLEMENTS = Functions/Functions.entitlements;
+				"CODE_SIGN_IDENTITY[sdk=macosx*]" = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
 				CURRENT_PROJECT_VERSION = 1;
@@ -404,6 +411,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_ENTITLEMENTS = Functions/Functions.entitlements;
+				"CODE_SIGN_IDENTITY[sdk=macosx*]" = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
 				CURRENT_PROJECT_VERSION = 1;

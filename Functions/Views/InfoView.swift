@@ -14,8 +14,8 @@ struct InfoView: View {
             
             Text("""
                         **Welcome to Functions!**
-                        - Global shortcut is ⌘⌥C, but it is changeable
-                        - Add previous solutions with arrow keys
+                        - Type expressions to calculate!
+                        - Add previous solutions with ↑↓ arrow keys
                         - Feel free to give feedback [here](https://github.com/ingleanthony/menu-bar-calculator/discussions)
                         
                         **Constants**
