@@ -39,7 +39,7 @@ struct SettingsView: View {
             }
             
             // MARK: - Toggle Launch at Login
-            LaunchAtLogin.Toggle()
+//            LaunchAtLogin.Toggle().accentColor(Color(accentColor))
             
             // MARK: - Toggle Button View
             Toggle(isOn: $showingButtons, label: {

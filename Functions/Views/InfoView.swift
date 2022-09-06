@@ -16,7 +16,7 @@ struct InfoView: View {
                         **Welcome to Functions!**
                         - Type expressions to calculate!
                         - Add previous solutions with ↑↓ arrow keys
-                        - Feel free to give feedback [here](https://github.com/ingleanthony/menu-bar-calculator/discussions)
+                        - Feel free to give feedback [here](https://github.com/ingleanthony/functions/issues)
                         
                         **Constants**
                         π or pi
