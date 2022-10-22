@@ -20,7 +20,8 @@ A calculator that lives in your macOS menu bar and keeps a history of your calcu
 ## Usage
 
 - Calculator can be accessed by pressing the `f(x)` symbol in your menu bar
-- The calculator can also be toggled with the global shortcut `option + command + c`
+- ~~The calculator can also be toggled with the global shortcut `option + command + c`~~ 
+- - This is not working yet, since there is no way to currently open a MenuBarExtra programmtically.
 - Calculations can be typed and submitted to history by pressing `Enter`
 - History is saved even when the app is quit. It can also be cleared.
 - Pprevious solutions or expressions can be added to the textfield by clicking on them
