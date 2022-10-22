@@ -16,6 +16,7 @@ struct ButtonView: View {
     @Binding var expression: String
     @Binding var historyIndex: Int
     @Binding var shouldMoveCursorToEnd: Bool
+    @AppStorage("accentColor") private var accentColor = "indigo"
     
     var body: some View {
         VStack {
@@ -25,7 +26,7 @@ struct ButtonView: View {
                 Button("C") {
                     expression = ""
                     historyIndex = -1
-                }.calcButton(backgroundColor: .accentColor,
+                }.calcButton(backgroundColor: Color(accentColor),
                              pressedColor: Color(nsColor: .tertiaryLabelColor))
                 
                 Button {

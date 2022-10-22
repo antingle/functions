@@ -14,6 +14,7 @@ struct ContentView: View {
         sortDescriptors: [NSSortDescriptor(keyPath: \History.timestamp, ascending: true)],
         animation: .default)
     private var history: FetchedResults<History>
+    @AppStorage("accentColor") private var accentColor = "indigo"
     @State private var showingSettings = false
     @State private var showingInfo = false
     
@@ -27,10 +28,10 @@ struct ContentView: View {
             // MARK: - Bottom Bar
             HStack {
                 Image(systemName: "function")
-                    .foregroundColor(.accentColor)
+                    .foregroundColor(Color(accentColor))
                 Text("Functions")
                     .font(.headline)
-                    .foregroundColor(.accentColor)
+                    .foregroundColor(Color(accentColor))
                 
                 Spacer()
                 
@@ -106,12 +107,12 @@ struct ContentView: View {
     }
 }
 
-private let itemFormatter: DateFormatter = {
-    let formatter = DateFormatter()
-    formatter.dateStyle = .short
-    formatter.timeStyle = .medium
-    return formatter
-}()
+//private let itemFormatter: DateFormatter = {
+//    let formatter = DateFormatter()
+//    formatter.dateStyle = .short
+//    formatter.timeStyle = .medium
+//    return formatter
+//}()
 
 struct ContentView_Previews: PreviewProvider {
     static var previews: some View {

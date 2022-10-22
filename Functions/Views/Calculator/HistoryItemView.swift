@@ -21,6 +21,9 @@ struct HistoryItemView: View {
     @State private var showButtons = false
     @State private var onHoverClear = false
     @State private var onHoverCopy = false
+    @State private var onHoverSolution = false
+    @State private var onHoverExpression = false
+    @AppStorage("accentColor") private var accentColor = "indigo"
     
     
     var body: some View {
@@ -46,7 +49,7 @@ struct HistoryItemView: View {
                         pasteBoard.clearContents()
                         pasteBoard.writeObjects([item.solution! as NSString])
                     } label: {
-                        Image(systemName: "doc.on.doc").foregroundColor(onHoverCopy ? .accentColor : .secondary)
+                        Image(systemName: "doc.on.doc").foregroundColor(onHoverCopy ? Color(accentColor) : .secondary)
                     }.buttonStyle(.plain)
                         .onHover { over in
                             onHoverCopy = over
@@ -56,12 +59,22 @@ struct HistoryItemView: View {
                 // this is reversed order since it is a ScrollView flipped upside down
                 Text(item.solution ?? "")
                     .font(.title2)
+                    .onHover { over in
+                        onHoverSolution = over
+                    }
                     .onTapGesture {
                         shouldMoveCursorToEnd = true
                         expression += item.solution!
                     }
-                    .foregroundColor(historyIndex != -1 ? (item.id == history[historyIndex].id ? .accentColor : .primary) : .primary)
+                    // I am very very sorry for this confusing tertiary statement
+                    // It basically says: change color to accentColor if selected with arrow keys
+                    // And/or it is hovered on
+                    .foregroundColor(historyIndex != -1 ?
+                        (item.id == history[historyIndex].id ? Color(accentColor) :
+                        onHoverSolution ? Color(accentColor) : .primary) :
+                        onHoverSolution ? Color(accentColor) : .primary)
                     .id(item.id)
+                    
             }
             .frame(maxWidth: .infinity, alignment: .trailing)
             .rotationEffect(Angle(degrees: 180)).scaleEffect(x: -1.0, y: 1.0, anchor: .center)
@@ -70,16 +83,20 @@ struct HistoryItemView: View {
             // MARK: - Expression (on the left)
             Text(item.expression ?? "")
                 .rotationEffect(Angle(degrees: 180)).scaleEffect(x: -1.0, y: 1.0, anchor: .center)
-                .frame(maxWidth: .infinity, alignment: .leading)
                 .font(.body)
-                .foregroundColor(.gray)
+                .foregroundColor(onHoverExpression ? Color(accentColor) : .gray)
+                .onHover { over in
+                    onHoverExpression = over
+                }
                 .onTapGesture {
                     shouldMoveCursorToEnd = true
                     expression += item.expression!
                 }
+                .frame(maxWidth: .infinity, alignment: .leading)
+                
             // TODO: Make this an option?
 //                                .padding(.bottom, 2)
-//                                .overlay(Rectangle().frame(width: nil, height: 0.4, alignment: .bottom).foregroundColor(Color.gray), alignment: .bottom)
+//                                .overlay(Rectangle().frame(width: nil, height: 0.3, alignment: .bottom).foregroundColor(Color.gray), alignment: .bottom)
             
         }
         .onHover { over in

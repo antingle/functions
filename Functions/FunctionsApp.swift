@@ -21,7 +21,6 @@ struct FunctionsApp: App {
     /* followed the solution in https://stackoverflow.com/a/65789202/827681 */
 
     var body: some Scene {
-        
         MenuBarExtra("Functions", systemImage: "function") {
             ContentView()
                 .environment(\.managedObjectContext, persistenceController.container.viewContext)
